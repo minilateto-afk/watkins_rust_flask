@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.DS_Store
+# Data redistribution license is not yet independently confirmed.
+# Do not accidentally publish the downloaded workbook or derived row-level data.
+data/raw/*.xlsx
+data/processed/*.csv
+data/processed/*.json

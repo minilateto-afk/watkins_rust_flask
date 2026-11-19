@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}方法與限制{% endblock %}
+{% block content %}
+<div class="eyebrow">METHODOLOGY / LIMITATIONS</div><h1>研究方法 <span class="h-accent">/ 第一階段</span></h1>
+<p class="intro">先確立資料與統計品質，再逐步驗證能否使用病害進展模型或推論統計。</p>
+<div class="split-grid">
+<section class="panel"><div class="section-label">DATA PIPELINE</div><h2>資料處理流程</h2><ol class="method-list"><li>保留原始 Excel 及三列來源標題。</li><li>記錄病害、地點、苗期／成株期、觀測日期與來源欄。</li><li>將明確百分比（如 50MR）拆為 50 與 MR。</li><li>標記 TMS、0-20MSS、DRY 等需進一步解釋的紀錄。</li><li>僅以可解析的數值計算描述統計，並公開缺失狀況。</li></ol></section>
+<section class="panel"><div class="section-label">FORMULAS</div><h2>統計方法</h2><p><b>平均數：</b> x̄ = Σxᵢ / n</p><p><b>樣本標準差：</b> s = √[Σ(xᵢ − x̄)² / (n − 1)]</p><p><b>中位數與四分位數：</b>使用排序及分位數的描述性定義。</p><p class="hint">若排除痕量或區間資料，其平均值只代表明確解析的子集合，不能宣稱無偏代表全體材料。</p></section>
+</div>
+<section class="panel"><div class="section-label">NEXT STAGE / NOT YET IMPLEMENTED</div><h2>下一階段候選方法</h2><ul class="method-list"><li><b>AUDPC：</b>檢查每組日期是否屬同一場連續觀測、評分與缺失規則，再使用梯形法。</li><li><b>Spearman：</b>先確認不同地點可以可靠配對同一材料，且比較期間與病害具可比性。</li><li><b>Friedman：</b>需要先確認重複測量的配對關係與推論前提。</li></ul><p class="hint">本版未計算上述三種方法，也未推斷抗病基因、遺傳率或正式育種選拔結果。</p></section>
+<section class="panel"><div class="section-label">PROVENANCE</div><h2>資料來源</h2><p>Watkins Yellow Rust Phenotypes Kenya & Ethiopia (2013 field observations). Zenodo DOI: <a href="https://doi.org/10.5281/zenodo.8349020" target="_blank" rel="noopener">10.5281/zenodo.8349020</a></p><p>本系統使用下載的 Excel 當作原始資料。資料集具體再散布授權請以 Zenodo 的原始紀錄 Rights / License 為準，不因可公開下載就推定可任意重發。</p></section>
+{% endblock %}

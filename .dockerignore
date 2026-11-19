@@ -1,0 +1,13 @@
+# Only send the code, templates, tests and original workbook to the Docker build.
+.git
+.gitignore
+.venv/
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+.env
+.env.*
+*.zip
+data/processed/

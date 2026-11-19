@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}材料 {{mat.material_id}}{% endblock %}
+{% block content %}
+<div class="eyebrow">ACCESSION DETAIL / {{mat.material_id}}</div><h1>材料 {{mat.material_id}} <span class="h-accent">/ 觀測紀錄</span></h1>
+<p class="intro">來源 accession：<b>{{mat.accession}}</b>　｜　來源國：{{mat.country or '未記載'}}　｜　名稱：{{mat.accession_name or '未記載'}}</p>
+<section class="panel"><div class="section-label">ADULT PHENOTYPE</div><h2>成株期已量化的病害嚴重度</h2>{% if chart %}{{chart|safe}}{% else %}<p>沒有可用的成株期百分比紀錄。</p>{% endif %}<p class="hint">不同病害與試驗地點不可直接連成同一條進展曲線；圖線依疾病、地點、觀測系列分組。</p></section>
+<section class="panel"><div class="section-label">RAW VS CLEANED</div><h2>所有原始觀測與清理結果</h2><div class="table-scroll"><table><thead><tr><th>病害</th><th>地點</th><th>階段</th><th>日期</th><th>來源欄</th><th>原始評分</th><th>數值 (%)</th><th>感染反應</th><th>解析狀態</th></tr></thead><tbody>{% for r in records %}<tr><td>{{disease_zh.get(r.disease,r.disease)}}</td><td>{{r.site}}</td><td>{{r.stage}}</td><td>{{r.date}}</td><td>{{r.source_column}}</td><td class="mono">{{r.raw_score or '—'}}</td><td>{{r.severity_pct}}</td><td>{{r.reaction}}</td><td>{{status_zh.get(r.parse_status,r.parse_status)}}</td></tr>{% endfor %}</tbody></table></div></section>
+<a class="back-link" href="{{url_for('materials_page')}}">← 返回材料查詢</a>
+{% endblock %}

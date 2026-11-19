@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}統計總覽{% endblock %}
+{% block content %}
+<div class="eyebrow">DATA EXPLORATION / STAGE 01</div>
+<h1>小麥銹病表型分析 <span class="h-accent">/ 統計總覽</span></h1>
+<p class="intro">使用原始田間觀測值進行可追溯的資料清理與描述統計；並非抗病基因鑑定或育種成果排名。</p>
+<div class="metrics">
+ <div class="metric"><span>小麥材料</span><strong>{{total_materials}}</strong><small>份，包含具名材料</small></div>
+ <div class="metric"><span>本次測量筆數</span><strong>{{stats.total}}</strong><small>一個欄位 × 650 份材料</small></div>
+ <div class="metric"><span>可量化筆數</span><strong>{{stats.valid}}</strong><small>僅明確格式的數字</small></div>
+ <div class="metric"><span>解析比例</span><strong>{{'%.1f' % (100*stats.valid/stats.total) if stats.total else 0}}%</strong><small>其餘保持原始標記</small></div>
+</div>
+<section class="panel filter-panel">
+ <div class="section-label">SELECT MEASUREMENT</div>
+ <form method="get" action="{{url_for('dashboard')}}" class="filters">
+  <div><label for="measurement">請選擇病害、地點與日期</label><select id="measurement" name="m">
+   {% for opt in measurements %}<option value="{{opt.column}}" {% if mid==opt.column %}selected{% endif %}>{{opt.display}}</option>{% endfor %}
+  </select></div>
+  <button type="submit">更新分析 ↗</button>
+  <a class="outline-button" href="{{url_for('export',m=mid)}}">匯出 CSV ↓</a>
+ </form>
+ <p class="hint"><strong>{{disease_zh[meta.disease]}} · {{meta.site}} · {{meta.label}}</strong> ｜ {{'幼苗期數字評分（尚未確認正式量尺）' if is_seedling else '成株期病害嚴重度（0–100%，僅可解析紀錄）'}} ｜ 來源欄 {{mid}}</p>
+</section>
+<div class="split-grid">
+ <section class="panel">
+  <div class="section-label">DISTRIBUTION</div><h2>{{'幼苗原始評分分布' if is_seedling else '病害嚴重度分布'}}</h2>
+  {% if hist %}{{hist|safe}}{% else %}<p>本次測量沒有可以安全量化的紀錄。</p>{% endif %}
+ </section>
+ <section class="panel">
+  <div class="section-label">DATA QUALITY</div><h2>評分格式與保留狀況</h2>
+  {{status_chart|safe}}
+ </section>
+</div>
+<section class="panel">
+ <div class="section-label">DESCRIPTIVE STATISTICS</div>
+ <h2>描述統計 <span class="subtle">／只使用有效數值</span></h2>
+ <div class="stat-grid">
+  <div><span>平均數</span><strong>{{stats.mean if stats.mean is not none else '—'}}</strong></div>
+  <div><span>中位數</span><strong>{{stats.median if stats.median is not none else '—'}}</strong></div>
+  <div><span>樣本標準差</span><strong>{{stats.std if stats.std is not none else '—'}}</strong></div>
+  <div><span>第一四分位數</span><strong>{{stats.q1 if stats.q1 is not none else '—'}}</strong></div>
+  <div><span>第三四分位數</span><strong>{{stats.q3 if stats.q3 is not none else '—'}}</strong></div>
+  <div><span>最小值至最大值</span><strong>{{stats.min if stats.min is not none else '—'}} – {{stats.max if stats.max is not none else '—'}}</strong></div>
+ </div>
+ <p class="hint">{{'幼苗數字目前只作原始量表的描述，不視為百分比病害嚴重度。' if is_seedling else '含 TMS、區間分數與 DRY 等紀錄尚未進行數值推估；此處的統計量只代表可解析的資料子集。'}}</p>
+</section>
+<section class="panel">
+ <div class="section-label">SOURCE AUDIT</div><h2>原始觀測預覽 <span class="subtle">／前 30 筆</span></h2>
+ <div class="table-scroll"><table><thead><tr><th>序號</th><th>材料編號</th><th>來源國</th><th>原始評分</th><th>處理類別</th><th>{{'幼苗分數' if is_seedling else '嚴重度 (%)'}}</th><th>感染反應</th></tr></thead>
+ <tbody>{% for r in records %}<tr><td><a href="{{url_for('material_detail',material_id=r.material_id)}}">{{r.material_id}}</a></td><td>{{r.accession}}</td><td>{{r.country}}</td><td class="mono">{{r.raw_score or '—'}}</td><td><span class="status">{{status_zh.get(r.parse_status,r.parse_status)}}</span></td><td>{{r.seedling_score if is_seedling else r.severity_pct}}</td><td>{{r.reaction}}</td></tr>{% endfor %}</tbody></table></div>
+</section>
+{% endblock %}
