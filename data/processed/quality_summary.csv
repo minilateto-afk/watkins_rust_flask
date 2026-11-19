@@ -1,0 +1,30 @@
+﻿measurement_id,disease,site,stage,series,date,total,numerical_adult,numerical_seedling,missing,trace,range,other,valid_adult_fraction
+AA,Stem rust,KARI-Njoro,adult,Njoro stem Apr–May,2013-04-21,650,495,0,154,0,0,1,0.7615384615384615
+AB,Stem rust,KARI-Njoro,adult,Njoro stem Apr–May,2013-04-30,650,489,0,159,1,0,1,0.7523076923076923
+AC,Stem rust,KARI-Njoro,adult,Njoro stem Apr–May,2013-05-07,650,490,0,159,0,0,1,0.7538461538461538
+AD,Stem rust,EIAR-Debre Zeit,adult,Debre Zeit stem Apr–Jun,2013-04-26,650,339,0,209,98,3,1,0.5215384615384615
+AE,Stem rust,EIAR-Debre Zeit,adult,Debre Zeit stem Apr–Jun,2013-05-10,650,242,0,368,29,10,1,0.3723076923076923
+AF,Stem rust,EIAR-Debre Zeit,adult,Debre Zeit stem Apr–Jun,2013-06-03,650,404,0,208,24,10,4,0.6215384615384615
+AG,Stem rust,Jeldu,adult,Jeldu stem Dec,2013-12-16,650,247,0,377,8,18,0,0.38
+AH,Leaf rust,Jeldu,adult,Jeldu leaf Dec,2013-12-16,650,269,0,377,2,2,0,0.41384615384615386
+AK,Leaf rust,KARI-Njoro,adult,Njoro leaf Apr–May,2013-04-21,650,488,0,160,1,0,1,0.7507692307692307
+AL,Leaf rust,KARI-Njoro,adult,Njoro leaf Apr–May,2013-04-30,650,494,0,155,0,0,1,0.76
+AM,Leaf rust,KARI-Njoro,adult,Njoro leaf Apr–May,2013-05-07,650,488,0,160,1,0,1,0.7507692307692307
+AN,Leaf rust,EIAR-Debre Zeit,adult,Debre Zeit leaf Apr–May,2013-04-26,650,398,0,231,20,0,1,0.6123076923076923
+AO,Leaf rust,EIAR-Debre Zeit,adult,Debre Zeit leaf Apr–May,2013-05-10,650,312,0,208,45,0,85,0.48
+F,Yellow rust,KALRO-Njoro,seedling,KALRO-Njoro seedlings,2013-03-26,650,0,504,145,0,0,1,0.0
+G,Yellow rust,KALRO-Njoro,seedling,KALRO-Njoro seedlings,2013-09-12,650,0,424,226,0,0,0,0.0
+I,Yellow rust,KARI-Njoro,adult,Njoro Apr–May,2013-04-21,650,496,0,153,0,0,1,0.7630769230769231
+J,Yellow rust,KARI-Njoro,adult,Njoro Apr–May,2013-04-30,650,490,0,159,0,0,1,0.7538461538461538
+K,Yellow rust,KARI-Njoro,adult,Njoro Apr–May,2013-05-07,650,490,0,159,0,0,1,0.7538461538461538
+L,Yellow rust,KARI-Njoro,adult,Njoro Sep–Oct,2013-09-25,650,423,0,205,22,0,0,0.6507692307692308
+M,Yellow rust,KARI-Njoro,adult,Njoro Sep–Oct,2013-10-03,650,427,0,205,17,0,1,0.6569230769230769
+O,Yellow rust,Meraro,adult,Meraro Aug–Nov,2013-08-10,650,192,0,377,42,38,1,0.2953846153846154
+P,Yellow rust,Meraro,adult,Meraro Aug–Nov,2013-10-18,650,193,0,377,38,42,0,0.2969230769230769
+Q,Yellow rust,Meraro,adult,Meraro Aug–Nov,2013-10-28,650,210,0,377,20,43,0,0.3230769230769231
+R,Yellow rust,Meraro,adult,Meraro Aug–Nov,2013-11-09,650,214,0,377,20,39,0,0.3292307692307692
+T,Yellow rust,Jeldu,adult,Jeldu Aug–Dec,2013-08-13,650,225,0,384,22,19,0,0.34615384615384615
+U,Yellow rust,Jeldu,adult,Jeldu Aug–Dec,2013-11-20,650,202,0,378,43,27,0,0.31076923076923074
+V,Yellow rust,Jeldu,adult,Jeldu Aug–Dec,2013-12-16,650,215,0,378,30,27,0,0.33076923076923076
+Y,Stem rust,KARI-Njoro,seedling,Njoro stem seedlings,2013-03-26,650,0,492,158,0,0,0,0.0
+Z,Stem rust,KARI-Njoro,seedling,Njoro stem seedlings,2013-09-12,650,0,410,239,0,0,1,0.0

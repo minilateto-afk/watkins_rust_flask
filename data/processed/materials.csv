@@ -1,0 +1,651 @@
+﻿material_id,accession,country,accession_name,excel_row
+1,1190201,Spain,Galberie,4
+2,1190202,Spain,Manitoba velloso,5
+3,1190082,India,Red Tikoria,6
+4,1190240,Iran,Razan Ferahan,7
+5,1190254,Morocco,,8
+6,1190153,Portugal,Trigo luanco rijo,9
+7,1190149,United Kingdom,Squarehead's Master,10
+8,1190713,India,Pusa No 4,11
+9,1190019,India,Gangajali,12
+10,1190032,India,Dehak,13
+11,1190216,Morocco,,14
+12,1190169,China,,15
+13,1190027,Australia,Ford,16
+14,1190064,Spain,,17
+15,1190399,China,,18
+16,1190033,India,Dehak,19
+17,1190223,Burma,Shan wheat,20
+18,1190300,Turkey,,21
+19,1190352,Yugoslavia,,22
+20,1190018,India,,23
+21,1190113,Spain,Trigo blancos,24
+22,1190208,India,Boojri (bearded),25
+23,1190211,France,Blé Seigle,26
+24,1190726,China,,27
+25,1190107,France,D.D. Tourneur,28
+26,1190573,Turkey,,29
+27,1190680,Italy,Grano locale,30
+28,1190706,India,Gahu (Nepali) or Kyo (Sikkimese),31
+29,1190497,Morocco,Mahan,32
+30,1190456,Afghanistan,,33
+31,1190716,India,Sufed Panjabi,34
+32,1190598,Portugal,Trigo Ideal,35
+33,1190016,Spain,Mocho,36
+34,1190042,France,Inversal,37
+35,1190020,India,Thori,38
+36,1190061,Spain,Mocho Rojo,39
+37,1190063,Spain,Manitoba,40
+38,1190154,Portugal,Trigo mole da regiad,41
+39,1190108,France,Vilmorin 29,42
+40,1190156,Yugoslavia,Native winter,43
+41,1190581,Iran,,44
+42,1190601,Spain,Trigo Pinet ó Rochal,45
+43,1190048,Spain,Gironde de Larrion,46
+44,1190011,India,Pusa 111,47
+45,1190044,Morocco,,48
+46,1190045,Syria,Douchani,49
+47,1190070,Spain,Great wheat,50
+48,1190085,Spain,Marquis,51
+49,1190109,France,P.M.L.1,52
+50,1190115,Yugoslavia,,53
+51,1190129,India,,54
+52,1190144,Spain,Buen labrador,55
+53,1190192,France,Way,56
+54,1190212,Morocco,,57
+55,1190220,Spain,,58
+56,1190249,India,Desi,59
+57,1190265,Canary Islands,,60
+58,1190269,Spain,Rieti navarro frondoso,61
+59,1190270,Spain,Catalan royo compacto,62
+60,1190335,*,,63
+61,1190341,Spain,Candeal,64
+62,1190366,Yugoslavia,Veliko Hoce,65
+63,1190383,Greece,Hokino,66
+64,1190411,India,,67
+65,1190414,India,,68
+66,1190419,India,,69
+67,1190435,China,,70
+68,1190487,USSR,"erythrospermum Korn., Flaksberger 23613",71
+69,1190491,France,Maylin,72
+70,1190512,India,Lyallpur 11,73
+71,1190523,India,Desi,74
+72,1190543,Spain,Marzal,75
+73,1190548,Spain,Baztanes de tallos llanos,76
+74,1190553,Canary Islands,,77
+75,1190556,Canary Islands,,78
+76,1190561,Crete,,79
+77,1190564,Greece,,80
+78,1190602,Spain,Candeal,81
+79,1190641,India,Samna,82
+80,1190679,Iran,,83
+81,1190692,India,Lyallpur 11,84
+82,1190733,Iran,Muganka x Belokoloska,85
+83,1190773,USSR,,86
+84,1190001,Morocco,,87
+85,1190073,Bulgaria,Bebrovo,88
+86,1190084,Spain,Moro,89
+87,1190088,Poland,Trigo preto rijo,90
+88,1190134,Australia,Bena,91
+89,1190145,Spain,Aurora,92
+90,1190164,India,Bhawarwall,93
+91,1190171,China,,94
+92,1190214,Morocco,,95
+93,1190217,Morocco,,96
+94,1190255,Tunisia,Louri,97
+95,1190437,China,,98
+96,1190492,Spain,Aduna,99
+97,1190536,Morocco,,100
+98,1190544,Spain,"Pelado de Estello, grano corto",101
+99,1190555,Spain,Trigo duros,102
+100,1190557,Canary Islands,,103
+101,1190603,Spain,Rico de Ituren,104
+102,1190731,India,Gahu (Nepali) or Kyo (Sikkimese),105
+103,1190741,Afghanistan,,106
+104,1190803,India,Pusa 80-5,107
+105,1190055,Spain,,108
+106,1190060,Portugal,Trigo luanco rijo,109
+107,1190165,India,Ka,110
+108,1190168,China,,111
+109,1190177,Portugal,Camara's no. 3,112
+110,1190218,Tunisia,Sbei Noir,113
+111,1190226,Spain,,114
+112,1190267,Spain,"Rieti navarro, grano lango",115
+113,1190276,Spain,Carpino Royo de Eslava,116
+114,1190340,Spain,Manitoba,117
+115,1190344,Spain,,118
+116,1190357,Yugoslavia,,119
+117,1190485,Algeria,Flaksberger 16200,120
+118,1190618,Yugoslavia,Veliko Hoce,121
+119,1190623,Bulgaria,,122
+120,1190668,Yugoslavia,,123
+121,1190002,Crete,Blé mavratheri,124
+122,1190003,Iran,,125
+123,1190004,Iraq,Rustam Exp Farm 99,126
+124,1190005,Australia,,127
+125,1190006,Australia,,128
+126,1190007,Australia,,129
+127,1190010,India,Pusa 80-5,130
+128,1190012,India,Pusa 90,131
+129,1190013,Bulgaria,Bebrovo,132
+130,1190015,Yugoslavia,,133
+131,1190021,India,Boojri,134
+132,1190022,Australia,Improved Steinwedel,135
+133,1190023,Australia,College Purple,136
+134,1190024,Australia,Aussie,137
+135,1190025,Australia,Sultan,138
+136,1190026,Australia,Sunset,139
+137,1190028,Australia,Fife,140
+138,1190029,Australia,Early Bird,141
+139,1190030,Australia,Majestic,142
+140,1190031,Australia,Rajah,143
+141,1190034,India,Desi,144
+142,1190041,France,Alliés,145
+143,1190043,Tunisia,Bartletta,146
+144,1190046,Crete,,147
+145,1190047,Spain,Pelado de espiga larga,148
+146,1190049,Spain,Pelado de Estella,149
+147,1190050,Spain,Buen labrador,150
+148,1190051,Spain,Pelado grano cilindrico,151
+149,1190052,Spain,Aurora,152
+150,1190053,Spain,,153
+151,1190054,Spain,,154
+152,1190056,Spain,Trigo Alaga,155
+153,1190057,Portugal,Trigo Ideal,156
+154,1190058,Portugal,Trigo Candeal,157
+155,1190059,Portugal,Trigo mole da regiad,158
+156,1190062,Spain,Great wheat,159
+157,1190065,Spain,Erria,160
+158,1190066,Spain,Mocho,161
+159,1190067,Spain,Toseta de Oronz,162
+160,1190068,*,,163
+161,1190069,Spain,Palado sensible a sequia,164
+162,1190071,Bulgaria,Constantin,165
+163,1190072,Yugoslavia,Rustic winter,166
+164,1190074,Yugoslavia,Bon Fermier,167
+165,1190077,Yugoslavia,Native winter,168
+166,1190078,Yugoslavia,Native winter,169
+167,1190080,India,,170
+168,1190081,India,Gahu (Nepali) or Kyo (Sikkimese),171
+169,1190083,Spain,Rigoctia,172
+170,1190086,India,Desi,173
+171,1190087,India,Pusa 4,174
+172,1190089,Australia,Bowen,175
+173,1190093,India,Pashmak,176
+174,1190094,India,Pashmak,177
+175,1190098,Poland,Hors Concurs,178
+176,1190099,Poland,Kolben Heinego,179
+177,1190100,Poland,Kitnouska,180
+178,1190103,Italy,"Gentil Rossa, Flaksberger 19928",181
+179,1190104,Italy,"Tipo Coronation R.95, Flaksberger 26539",182
+180,1190106,France,Magnitot,183
+181,1190111,Morocco,,184
+182,1190112,Turkey,,185
+183,1190116,Spain,,186
+184,1190117,Spain,Trigo môcho (sin raspa),187
+185,1190120,Australia,,188
+186,1190121,Australia,,189
+187,1190122,Australia,,190
+188,1190123,Australia,,191
+189,1190124,India,,192
+190,1190125,India,Federation,193
+191,1190126,India,Dolatkhani (white),194
+192,1190127,India,Thori (beardless),195
+193,1190128,India,Phundi,196
+194,1190130,Spain,Marquis,197
+195,1190132,Australia,Union,198
+196,1190133,Australia,Waratah,199
+197,1190135,Australia,Canberra,200
+198,1190136,Australia,Exquisite,201
+199,1190137,Australia,Federation,202
+200,1190138,Australia,Duchess,203
+201,1190139,France,Bladette de Besplas,204
+202,1190141,China,,205
+203,1190143,Spain,,206
+204,1190146,Spain,Aurora,207
+205,1190151,Portugal,Trigo môcho ruivo,208
+206,1190152,Portugal,Trigo Brancal,209
+207,1190155,Portugal,Trigo Marques on Pero Espuna,210
+208,1190160,Spain,Mocho de Burgos,211
+209,1190163,Spain,Mocho Rojo,212
+210,1190167,India,Thori,213
+211,1190170,China,,214
+212,1190172,India,Bhawarwall,215
+213,1190173,Australia,Teakles Red,216
+214,1190174,India,Desi,217
+215,1190176,Afghanistan,,218
+216,1190180,Spain,Bastanes royo productivo,219
+217,1190183,Poland,Extra Kolben Heinego,220
+218,1190184,Poland,Surka Cezostna,221
+219,1190187,Italy,Flaksberger 21222,222
+220,1190188,France,Japhet Alsace,223
+221,1190189,France,Rouge de St-Laud,224
+222,1190193,France,Wilson jaune,225
+223,1190194,France,Rouge de Bordeaux,226
+224,1190198,India,Mundia,227
+225,1190199,India,Boojri (bearded),228
+226,1190204,India,Gahu (Nepali) or Kyo (Sikkimese),229
+227,1190205,India,Boojri,230
+228,1190206,India,Desi White,231
+229,1190207,Iran,Autumn wheat,232
+230,1190209,Egypt,Belardi 24B,233
+231,1190210,India,Dolatkhani (white),234
+232,1190213,Morocco,Mahan,235
+233,1190215,Morocco,,236
+234,1190219,Spain,,237
+235,1190221,Spain,,238
+236,1190222,Crete,Leventis (Blé de Pologne),239
+237,1190224,China,Red wheat,240
+238,1190225,Canary Islands,,241
+239,1190228,Spain,Trigo Candeal Blanquillo,242
+240,1190229,Portugal,Trigo Tremês,243
+241,1190230,Portugal,Trigo Precoce,244
+242,1190232,India,Pusa 52,245
+243,1190233,India,Lyallpur 14,246
+244,1190238,Iran,,247
+245,1190239,Spain,Barbilla,248
+246,1190242,India,White Murga,249
+247,1190243,India,White Tikoria,250
+248,1190244,India,Desi White,251
+249,1190245,Australia,King's White,252
+250,1190246,India,Soor Ghanum,253
+251,1190248,India,Desi,254
+252,1190250,China,Yihsien 1485,255
+253,1190251,Australia,,256
+254,1190252,Algeria,"Mahon, Flaksberger 16167",257
+255,1190253,Morocco,,258
+256,1190257,Tunisia,Native hard,259
+257,1190258,Morocco,,260
+258,1190259,Morocco,,261
+259,1190260,Canary Islands,,262
+260,1190261,Canary Islands,,263
+261,1190262,Canary Islands,,264
+262,1190263,Canary Islands,,265
+263,1190264,Canary Islands,,266
+264,1190266,Spain,Baztanes compacto,267
+265,1190268,Spain,Catalan de tallo corto,268
+266,1190271,Spain,"Hembrilla alto, feurta",269
+267,1190272,Spain,Royo de dificil desgrane,270
+268,1190273,Spain,,271
+269,1190274,Spain,Trigo blancos,272
+270,1190275,Spain,"Carpino alto, precoz",273
+271,1190277,Spain,,274
+272,1190279,Spain,Hembrilla de la tierra,275
+273,1190281,Greece,Deve,276
+274,1190282,Greece,Asprotheri,277
+275,1190283,Greece,,278
+276,1190284,Greece,Trigonostaro,279
+277,1190285,Greece,,280
+278,1190287,Crete,,281
+279,1190289,Crete,Blé cheliostazo,282
+280,1190290,Crete,,283
+281,1190291,Cyprus,Psathas,284
+282,1190292,Cyprus,Asprokoutsoullon,285
+283,1190293,Turkey,,286
+284,1190294,Turkey,,287
+285,1190295,Turkey,,288
+286,1190296,Turkey,,289
+287,1190297,Turkey,,290
+288,1190298,Turkey,,291
+289,1190299,Turkey,,292
+290,1190301,Turkey,,293
+291,1190303,*,Gharbié,294
+292,1190304,*,,295
+293,1190305,Egypt,,296
+294,1190306,Iraq,"Kandhari, Rustam Exp Farm 859",297
+295,1190308,Iran,,298
+296,1190314,China,,299
+297,1190315,China,,300
+298,1190316,China,,301
+299,1190317,China,,302
+300,1190318,China,,303
+301,1190321,China,,304
+302,1190322,China,,305
+303,1190326,Australia,,306
+304,1190327,Palestine,Mughari,307
+305,1190328,Egypt,Brown 11,308
+306,1190334,*,,309
+307,1190339,Portugal,Trigo Precoce,310
+308,1190345,Bulgaria,,311
+309,1190346,Bulgaria,,312
+310,1190347,Bulgaria,,313
+311,1190348,Bulgaria,,314
+312,1190349,Bulgaria,Golema Franga,315
+313,1190351,Yugoslavia,,316
+314,1190353,Yugoslavia,,317
+315,1190354,Yugoslavia,,318
+316,1190355,Yugoslavia,,319
+317,1190356,Yugoslavia,,320
+318,1190358,Yugoslavia,,321
+319,1190359,Yugoslavia,,322
+320,1190360,Yugoslavia,Veliko Hoce,323
+321,1190361,Yugoslavia,,324
+322,1190362,Yugoslavia,,325
+323,1190364,Yugoslavia,,326
+324,1190365,Yugoslavia,,327
+325,1190368,Yugoslavia,Prolific,328
+326,1190369,Yugoslavia,Native winter,329
+327,1190370,Yugoslavia,Native winter,330
+328,1190372,Yugoslavia,Native winter,331
+329,1190373,Iran,Kerbelai Ali Khani,332
+330,1190375,Iran,,333
+331,1190376,Iran,Vilayati,334
+332,1190377,Iran,Sarakhs,335
+333,1190378,Iran,Sarakh,336
+334,1190380,Iran,Sari Boghda,337
+335,1190381,India,Lyallpur 14,338
+336,1190382,India,,339
+337,1190384,Greece,Vardarka Chervenaka,340
+338,1190386,Spain,Black Argaña,341
+339,1190387,Spain,,342
+340,1190388,Spain,,343
+341,1190389,Portugal,Trigo Lobeiro,344
+342,1190390,Portugal,Trigo Rietti,345
+343,1190392,Portugal,Trigo Galego,346
+344,1190393,Portugal,Trigo Galego,347
+345,1190394,Portugal,Trigo Mourisco ruivo,348
+346,1190395,Portugal,Trigo Precoce,349
+347,1190396,Portugal,Trigo Rietti,350
+348,1190397,Portugal,Trigo Ribeiro,351
+349,1190398,Palestine,Abu Fashi,352
+350,1190401,Portugal,Trigo Marquês,353
+351,1190404,Iran,Serabend,354
+352,1190405,Iran,Safid,355
+353,1190406,India,Desi,356
+354,1190407,India,,357
+355,1190409,India,Setwa,358
+356,1190412,India,Desi White,359
+357,1190416,India,,360
+358,1190417,India,,361
+359,1190420,India,Dhania,362
+360,1190421,India,,363
+361,1190422,India,Desi,364
+362,1190423,India,Desi,365
+363,1190424,India,Desi,366
+364,1190425,India,Desi,367
+365,1190426,India,Desi,368
+366,1190427,India,Desi,369
+367,1190428,India,Desi,370
+368,1190429,India,Soor Ghanum,371
+369,1190431,India,Soor Ghanum,372
+370,1190432,India,Soor Ghanum,373
+371,1190433,India,Soor Ghanum,374
+372,1190434,China,Maitzu,375
+373,1190439,China,,376
+374,1190440,China,,377
+375,1190441,China,,378
+376,1190442,China,,379
+377,1190443,China,,380
+378,1190444,China,,381
+379,1190447,China,,382
+380,1190448,Romania,Tiganesti 653,383
+381,1190449,Romania,Todiresti,384
+382,1190453,Afghanistan,,385
+383,1190454,Afghanistan,,386
+384,1190455,Afghanistan,,387
+385,1190457,Afghanistan,,388
+386,1190458,Afghanistan,,389
+387,1190459,Afghanistan,,390
+388,1190460,Afghanistan,,391
+389,1190461,Afghanistan,,392
+390,1190463,Afghanistan,,393
+391,1190464,Afghanistan,,394
+392,1190465,Afghanistan,,395
+393,1190466,Afghanistan,,396
+394,1190467,Afghanistan,,397
+395,1190468,Afghanistan,,398
+396,1190469,Afghanistan,,399
+397,1190470,Afghanistan,,400
+398,1190471,Afghanistan,,401
+399,1190474,Afghanistan,,402
+400,1190475,Afghanistan,,403
+401,1190476,Afghanistan,,404
+402,1190477,Portugal,Trigo ruivo fino,405
+403,1190478,Afghanistan,,406
+404,1190479,Poland,Ostka Wieclawicka,407
+405,1190483,Poland,Surka Oscista,408
+406,1190484,Italy,"Decimomanna, Flaksberger 20119",409
+407,1190486,USSR,"erythrospermum Korn., Flaksberger 17517",410
+408,1190490,France,Saissette de Maninet P,411
+409,1190493,Tunisia,Sbei 292,412
+410,1190494,Spain,Trigo blancos,413
+411,1190495,Morocco,,414
+412,1190496,Morocco,,415
+413,1190498,Turkey,,416
+414,1190499,Turkey,,417
+415,1190501,Iraq,"Kandhari, Rustam Exp Farm 860",418
+416,1190502,Burma,2193/20-14,419
+417,1190503,Burma,2193/20-8,420
+418,1190504,China,,421
+419,1190505,Iran,,422
+420,1190506,Iran,,423
+421,1190507,Australia,,424
+422,1190508,*,,425
+423,1190509,Portugal,,426
+424,1190510,Portugal,Alexandre? (Italian),427
+425,1190511,India,Lyallpur 10,428
+426,1190513,Iran,,429
+427,1190514,Iran,,430
+428,1190515,Iran,Zardak-i-Harrami,431
+429,1190517,India,Spin,432
+430,1190518,India,Lalia Desi,433
+431,1190519,India,Desi,434
+432,1190520,India,,435
+433,1190522,India,Sambhoria (Lalwali Wala),436
+434,1190524,India,Desi,437
+435,1190526,*,,438
+436,1190527,India,Dehak Panjabi,439
+437,1190530,Afghanistan,,440
+438,1190531,Spain,Aurora,441
+439,1190532,Tunisia,Mahmoudi A.P.3.,442
+440,1190533,Morocco,,443
+441,1190534,Morocco,,444
+442,1190537,Tunisia,Biskri,445
+443,1190538,Tunisia,Biskri,446
+444,1190539,Spain,Carpino alto frondoso,447
+445,1190540,Spain,Carpino Royo de Eslava,448
+446,1190541,Spain,Colorado temporano,449
+447,1190542,Spain,"Rieti navarro, tallo fuerte, corto",450
+448,1190545,Spain,Catalan de grano corto,451
+449,1190546,Spain,"Hembrilla alto, fuerta",452
+450,1190547,Spain,Royo de alta,453
+451,1190549,Spain,Catalan de grana corto,454
+452,1190550,Spain,"Rieti navarro, alto fuerto",455
+453,1190551,Spain,Hembrilla Rieti,456
+454,1190552,Canary Islands,,457
+455,1190554,Canary Islands,,458
+456,1190558,Canary Islands,,459
+457,1190559,Spain,Trigo semi-duro,460
+458,1190560,Greece,Asprotheri,461
+459,1190562,Greece,,462
+460,1190563,Crete,Blé zombitos,463
+461,1190565,Greece,,464
+462,1190566,Greece,,465
+463,1190567,Greece,,466
+464,1190568,China,,467
+465,1190569,Greece,Zulitsa,468
+466,1190570,Greece,Arnaout,469
+467,1190571,Turkey,,470
+468,1190572,*,,471
+469,1190574,Turkey,,472
+470,1190577,Iran,Sarakhsi,473
+471,1190578,Iran,,474
+472,1190579,Iran,Vassfe,475
+473,1190580,Iran,,476
+474,1190582,China,,477
+475,1190583,China,,478
+476,1190584,China,,479
+477,1190585,China,,480
+478,1190587,China,,481
+479,1190588,China,,482
+480,1190589,China,,483
+481,1190590,Portugal,Trigo luanca Bonito,484
+482,1190591,Portugal,Trigo Anafil,485
+483,1190592,Portugal,Trigo Morenico Ruivo,486
+484,1190593,Portugal,Trigo Ideal,487
+485,1190594,Portugal,Trigo Durasio branco,488
+486,1190595,Portugal,Trigo Barbela,489
+487,1190596,Portugal,Trigo Galego Môcho,490
+488,1190597,Portugal,Trigo Belini,491
+489,1190599,Portugal,Trigo Ideal,492
+490,1190600,Spain,Jeja reja,493
+491,1190604,Spain,,494
+492,1190605,Greece,Karabash,495
+493,1190606,Greece,Vardarka Chervenaka,496
+494,1190608,Yugoslavia,Native winter,497
+495,1190609,Yugoslavia,,498
+496,1190610,Yugoslavia,,499
+497,1190611,Yugoslavia,,500
+498,1190612,Yugoslavia,Winter No.10,501
+499,1190613,Yugoslavia,,502
+500,1190614,Yugoslavia,Potiska,503
+501,1190615,Yugoslavia,Native winter,504
+502,1190617,Yugoslavia,Rustic winter,505
+503,1190619,Yugoslavia,,506
+504,1190620,Yugoslavia,Native winter,507
+505,1190622,Bulgaria,Shumen,508
+506,1190625,Iran,,509
+507,1190627,Iran,,510
+508,1190628,Iran,Khal Kirmiz,511
+509,1190629,Iran,Qizilqin Boghda,512
+510,1190631,Iran,Qizilqin Boghda,513
+511,1190632,Iran,Khusheh Safid,514
+512,1190633,India,,515
+513,1190634,Hungary,,516
+514,1190635,Hungary,,517
+515,1190637,Turkey,,518
+516,1190638,Crete,,519
+517,1190639,Crete,,520
+518,1190640,Iran,,521
+519,1190642,India,Pusa 12,522
+520,1190643,India,Punjab 8A,523
+521,1190644,India,Kaghzi Desi,524
+522,1190646,India,Desi,525
+523,1190647,China,,526
+524,1190648,China,,527
+525,1190649,China,,528
+526,1190650,China,,529
+527,1190653,China,,530
+528,1190655,China,,531
+529,1190656,China,,532
+530,1190657,China,,533
+531,1190658,China,,534
+532,1190659,China,,535
+533,1190660,China,,536
+534,1190661,USSR,,537
+535,1190662,Romania,Samanta 1252,538
+536,1190667,Afghanistan,,539
+537,1190671,USSR,"ferrugineum Al., Flaksberger 17525",540
+538,1190673,USSR,"ferrugineum Al., Flaksberger 17525",541
+539,1190674,Iraq,Rustam Exp Farm 87,542
+540,1190675,Tunisia,Mahmoudi,543
+541,1190676,Tunisia,Souri,544
+542,1190678,Iran,,545
+543,1190681,Iran,,546
+544,1190682,Crete,Blé cheliostazo,547
+545,1190683,Spain,Catalan de grano corto pesado,548
+546,1190684,Iran,Vilayati,549
+547,1190685,Spain,Trigo duros,550
+548,1190686,Morocco,,551
+549,1190687,Tunisia,Richelle Hative,552
+550,1190688,Spain,Baztanes feurtes,553
+551,1190689,Spain,Trigo Obispado,554
+552,1190690,Greece,,555
+553,1190693,Iraq,Rustam Exp Farm 79,556
+554,1190694,India,Lyallpur 8A,557
+555,1190695,China,,558
+556,1190696,India,Gahu (Nepali) or Kyo (Sikkimese),559
+557,1190697,India,Desi,560
+558,1190698,China,,561
+559,1190699,China,Kaifeng 124,562
+560,1190700,China,Kaifeng 323-9,563
+561,1190701,Iran,Sukh Das,564
+562,1190702,Iran,Gandum-i-Kal-i-qirmiz,565
+563,1190703,China,,566
+564,1190704,Iran,Ma'auneh,567
+565,1190705,Iran,Kooseh,568
+566,1190711,India,Gahu (Nepali) or Kyo (Sikkimese),569
+567,1190714,India,Sufed Panjabi,570
+568,1190715,India,Desi,571
+569,1190718,China,,572
+570,1190719,China,,573
+571,1190720,China,,574
+572,1190721,China,,575
+573,1190722,China,,576
+574,1190723,Afghanistan,,577
+575,1190724,India,Desi,578
+576,1190727,China,,579
+577,1190728,Iraq,Rustam Exp Farm 171,580
+578,1190729,Iran,Gandum-i-Jiruft,581
+579,1190732,India,Gahu (Nepali) or Kyo (Sikkimese),582
+580,1190734,USSR,Shatilov Exp Sta,583
+581,1190735,Algeria,,584
+582,1190737,Italy,Edda,585
+583,1190739,India,Pusa 6,586
+584,1190742,Algeria,,587
+585,1190743,USSR,,588
+586,1190745,USSR,,589
+587,1190746,USSR,Muganka,590
+588,1190747,Ethiopia,,591
+589,1190748,USSR,,592
+590,1190749,USSR,,593
+591,1190750,USSR,Valki Exp Sta 3,594
+592,1190758,*,,595
+593,1190759,USSR,,596
+594,1190760,USSR,,597
+595,1190761,USSR,,598
+596,1190762,Algeria,,599
+597,1190763,India,Lalmi Faizabad No2,600
+598,1190764,India,Abi,601
+599,1190765,USSR,816,602
+600,1190767,USSR,,603
+601,1190768,India,Abi,604
+602,1190769,Algeria,Mahon,605
+603,1190770,USSR,,606
+604,1190771,USSR,,607
+605,1190774,Ethiopia,,608
+606,1190775,USSR,,609
+607,1190776,USSR,,610
+608,1190777,Finland,,611
+609,1190778,Italy,Piccolo,612
+610,1190783,USSR,,613
+611,1190784,Italy,Oberdan,614
+612,1190786,USSR,,615
+613,1190787,USSR,,616
+614,1190788,USSR,,617
+615,1190789,USSR,Abi,618
+616,1190790,USSR,Dickson J G 294,619
+617,1190792,USSR,,620
+618,1190793,USSR,,621
+619,1190794,USSR,,622
+620,1190797,USSR,,623
+621,1190798,USSR,,624
+622,1190799,USSR,,625
+623,1190802,USSR,,626
+624,1190804,USSR,Dickson J G 302,627
+625,1190805,USSR,,628
+626,1190806,Italy,,629
+627,1190807,USSR,Valki Exp Sta 1,630
+628,1190808,USSR,,631
+629,1190809,USSR,,632
+630,1190811,Tunisia,,633
+631,1190812,China,,634
+632,1190813,India,Malo,635
+633,1190814,Tunisia,Allorca,636
+634,1190816,Italy,,637
+635,1190818,China,,638
+636,1190820,China,,639
+637,1190821,China,,640
+638,1190822,China,,641
+639,1190823,China,,642
+640,1190824,China,,643
+641,1190825,China,,644
+642,1190826,China,,645
+643,1190828,China,,646
+644,1190829,China,Chinese White,647
+645,1190904,Spain,Trigo barbilla,648
+646,1190911,Hungary,,649
+647,Avocet,,,650
+648,Paragon,UK,,651
+649,Robigus,UK,,652
+650,Pavon 76,,,653

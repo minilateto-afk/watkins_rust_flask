@@ -1,0 +1,30 @@
+﻿column,disease,site,stage,series,date,label,date_source
+F,Yellow rust,KALRO-Njoro,seedling,KALRO-Njoro seedlings,2013-03-26,Mar 26,Excel serial 41359
+G,Yellow rust,KALRO-Njoro,seedling,KALRO-Njoro seedlings,2013-09-12,Sep 12,Excel serial 41529
+I,Yellow rust,KARI-Njoro,adult,Njoro Apr–May,2013-04-21,Apr 21,source header
+J,Yellow rust,KARI-Njoro,adult,Njoro Apr–May,2013-04-30,Apr 30,source header
+K,Yellow rust,KARI-Njoro,adult,Njoro Apr–May,2013-05-07,May 7,source header
+L,Yellow rust,KARI-Njoro,adult,Njoro Sep–Oct,2013-09-25,Sep 25,source header
+M,Yellow rust,KARI-Njoro,adult,Njoro Sep–Oct,2013-10-03,Oct 3,source header
+O,Yellow rust,Meraro,adult,Meraro Aug–Nov,2013-08-10,Aug 10,source header
+P,Yellow rust,Meraro,adult,Meraro Aug–Nov,2013-10-18,Oct 18,source header
+Q,Yellow rust,Meraro,adult,Meraro Aug–Nov,2013-10-28,Oct 28,source header
+R,Yellow rust,Meraro,adult,Meraro Aug–Nov,2013-11-09,Nov 9,source header
+T,Yellow rust,Jeldu,adult,Jeldu Aug–Dec,2013-08-13,Aug 13,source header
+U,Yellow rust,Jeldu,adult,Jeldu Aug–Dec,2013-11-20,Nov 20,source header
+V,Yellow rust,Jeldu,adult,Jeldu Aug–Dec,2013-12-16,Dec 16,source header
+Y,Stem rust,KARI-Njoro,seedling,Njoro stem seedlings,2013-03-26,Mar 26,Excel serial 41359
+Z,Stem rust,KARI-Njoro,seedling,Njoro stem seedlings,2013-09-12,Sep 12,Excel serial 41529
+AA,Stem rust,KARI-Njoro,adult,Njoro stem Apr–May,2013-04-21,Apr 21,source header
+AB,Stem rust,KARI-Njoro,adult,Njoro stem Apr–May,2013-04-30,Apr 30,source header
+AC,Stem rust,KARI-Njoro,adult,Njoro stem Apr–May,2013-05-07,May 7,source header
+AD,Stem rust,EIAR-Debre Zeit,adult,Debre Zeit stem Apr–Jun,2013-04-26,Apr 26,Excel serial 41390
+AE,Stem rust,EIAR-Debre Zeit,adult,Debre Zeit stem Apr–Jun,2013-05-10,May 10,Excel serial 41404
+AF,Stem rust,EIAR-Debre Zeit,adult,Debre Zeit stem Apr–Jun,2013-06-03,Jun 3,Excel serial 41428
+AG,Stem rust,Jeldu,adult,Jeldu stem Dec,2013-12-16,Dec 16,source header
+AH,Leaf rust,Jeldu,adult,Jeldu leaf Dec,2013-12-16,Dec 16,source header
+AK,Leaf rust,KARI-Njoro,adult,Njoro leaf Apr–May,2013-04-21,Apr 21,source header
+AL,Leaf rust,KARI-Njoro,adult,Njoro leaf Apr–May,2013-04-30,Apr 30,source header
+AM,Leaf rust,KARI-Njoro,adult,Njoro leaf Apr–May,2013-05-07,May 7,source header
+AN,Leaf rust,EIAR-Debre Zeit,adult,Debre Zeit leaf Apr–May,2013-04-26,Apr 26,Excel serial 41390
+AO,Leaf rust,EIAR-Debre Zeit,adult,Debre Zeit leaf Apr–May,2013-05-10,May 10,Excel serial 41404

@@ -15,6 +15,7 @@ from pathlib import Path
 from typing import Any
 import pandas as pd
 from measurements import MEASUREMENTS, as_records
+from audpc_analysis import export_audpc
 
 ROOT = Path(__file__).resolve().parent
 RAW = ROOT / 'data/raw/Watkins.xlsx'
@@ -122,6 +123,7 @@ def export_all(rows: list[list[Any]], directory: Path=OUTPUT) -> dict:
         'note':'Not a genetic dataset; no automatic imputation of trace, interval, special markers.'
     }
     (directory/'overview.json').write_text(json.dumps(overview,ensure_ascii=False,indent=2),encoding='utf-8')
+    overview['audpc_phase2'] = export_audpc(obs,mats,directory)
     return overview
 
 def main():

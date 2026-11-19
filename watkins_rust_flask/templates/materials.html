@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}材料查詢{% endblock %}
+{% block content %}
+<div class="eyebrow">ACCESSION EXPLORER</div><h1>小麥材料 <span class="h-accent">/ 查詢</span></h1>
+<p class="intro">可依來源材料編號、Excel 序號、來源國或材料名稱搜尋。</p>
+<section class="panel"><form class="filters" method="get"><div><label for="q">材料查詢</label><input id="q" name="q" value="{{q}}" placeholder="例如 1190201、Spain、Galberie" /></div><button type="submit">搜尋 ↗</button></form><p class="hint">符合 {{total}} 筆；最多展示前 100 筆。</p></section>
+<section class="panel"><div class="table-scroll"><table><thead><tr><th>Excel 序號</th><th>來源 accession</th><th>來源國</th><th>材料名稱</th><th>查看</th></tr></thead><tbody>{% for r in rows %}<tr><td>{{r.material_id}}</td><td>{{r.accession}}</td><td>{{r.country}}</td><td>{{r.accession_name}}</td><td><a href="{{url_for('material_detail',material_id=r.material_id)}}">觀測明細 →</a></td></tr>{% endfor %}</tbody></table></div></section>
+{% endblock %}

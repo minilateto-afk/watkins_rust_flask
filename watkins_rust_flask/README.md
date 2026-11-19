@@ -1,6 +1,8 @@
-# Watkins 小麥銹病表型資料分析系統 — 第一階段
+# Watkins 小麥銹病表型資料分析系統 — 第二階段（Docker + AUDPC）
 
-**專題定位：** 使用公開的田間試驗表型資料，進行資料清理、描述統計及可互動的 Flask 視覺化。此階段**沒有**進行抗病基因鑑定、抗病育種材料排名、AUDPC、Friedman、Spearman 或因果推論。
+**專題定位：** 延續第一階段的公開小麥銹病表型資料清理、描述統計與 Flask 視覺化，**新增 AUDPC 梯形法、逐筆手算驗證與資料完整性追蹤**。本階段不進行抗病基因鑑定、正式抗病育種材料排名、Friedman、Spearman 或因果推論。
+
+**本版新增：** `AUDPC 分析` 頁面可查看 KARI-Njoro 2013 黃銹病 Apr–May 的完整三次觀測（490/650 筆）；計算並互動檢查兩段梯形、AUDPC（%·天）與時間加權平均病害嚴重度（%）。未達條件的 160 筆另記錄原因。數學筆記詳見 `第二階段_AUDPC數學與驗證筆記.md`。
 
 ## 專題內容
 
@@ -60,9 +62,10 @@ python app.py
 ## 網頁頁面
 
 - **統計總覽**：切換銹病、地點、日期及生長期，查看直方圖、平均數、中位數、樣本標準差及資料解析狀況；可匯出選定欄位的 CSV。
+- **AUDPC 分析（第二階段新增）**：只針對 I/J/K 三欄同系列完整觀測計算 AUDPC；有分布圖、材料曲線、梯形計算步驟、搜尋排序與結果 CSV 下載。
 - **資料品質**：29 個量測欄的有效值、痕量、區間、缺失比例。
 - **材料查詢**：以 Excel 序號、材料編號、名稱或來源國搜尋；檢視原始記錄與不同觀測的散點／折線圖。
-- **方法與限制**：明示使用的描述統計與暫時未加入的進階方法。
+- **方法與限制**：明示描述統計與 AUDPC 公式、真實資料手算例子，以及仍暫緩的統計檢定。
 
 ## 清理規則（重要）
 
@@ -85,7 +88,8 @@ python app.py
 ```text
 watkins_rust_flask/
   app.py                       Flask 路由、描述統計、互動圖表
-  prepare_data.py              將原始 Excel 轉為長格式資料，保留審計紀錄
+  prepare_data.py              將原始 Excel 轉為長格式資料，並產生 AUDPC 衍生檔
+  audpc_analysis.py            來源 I/J/K 校驗、完整案例篩選、梯形面積計算
   measurements.py              原始量測欄位 29 項與日期、地點對應
   requirements.txt
   Dockerfile                   Python 環境、資料預處理、Gunicorn 伺服器
@@ -100,17 +104,24 @@ watkins_rust_flask/
     measurement_dictionary.csv 29 個量測欄位對照
     quality_summary.csv        各量測欄位資料品質
     overview.json              記錄數量總結
+    audpc_njoro_apr_may.csv    490 筆完整材料的 AUDPC 明細
+    audpc_excluded.csv         160 筆未納入計算的原因與原始值
+    audpc_summary.json         AUDPC 日期/範圍/資料量摘要
   templates/                   HTML 網頁
   static/css/                  自訂 RWD 樣式
   static/js/plotly.min.js      本地 Plotly：離線開啟也可顯示互動圖
-  tests/                       小型資料規則與完整性檢查
+  tests/                       資料規則、AUDPC 計算與數值完整性測試
 ```
 
 ## 數學方法與下一階段
 
-目前已做：平均數、樣本標準差、分位數、直方圖、有效值/缺失狀態分布。
+**已完成：** 平均數、樣本標準差、分位數、直方圖、解析狀態分布；加上 AUDPC（梯形數值積分）與時間加權平均嚴重度，均提供可追溯來源資料。
 
-**預計但尚未做：** 先確認同材料、同地點、同系列的連續日期及評分規則後再實作 AUDPC（梯形法）。Spearman 與 Friedman 則要再確認研究問題、配對性及推論前提，不能直接套用。
+**AUDPC 研究範圍：** 2013 KARI-Njoro 黃銹病成株期 `I` (2013-04-21)、`J` (2013-04-30)、`K` (2013-05-07)，間隔 9、7 天。只採 490 筆完整案例，160 筆原始資料缺失或無法解析不插補。範例：材料 2 的 20、30、30（%）算出 `225 + 210 = 435 %·天`，時間加權平均 `435/16 = 27.1875%`。
+
+**暫緩：** Spearman 與 Friedman，直到確認比較研究設計、觀測配對及推論前提；也不估計遺傳率或宣稱育種選拔結果。
+
+**數學參考：** American Phytopathological Society（APS）介紹的 AUDPC 梯形法：<https://www.apsnet.org/edcenter/sites/EcologyAndEpidemiologyInR/DiseaseProgress/Pages/AUDPC.aspx>。
 
 ## 學術倫理與授權
 
@@ -124,3 +135,5 @@ watkins_rust_flask/
 ```bash
 python -m unittest discover -s tests -v
 ```
+
+第二階段手算與方法說明：`第二階段_AUDPC數學與驗證筆記.md`。

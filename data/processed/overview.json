@@ -1,0 +1,22 @@
+{
+  "materials": 650,
+  "measurements": 29,
+  "observation_cells": 18850,
+  "stages": {
+    "adult": 16250,
+    "seedling": 2600
+  },
+  "parse_status_counts": {
+    "adult_severity": 8932,
+    "missing_marker": 7202,
+    "seedling_score": 1830,
+    "trace_not_quantified": 483,
+    "range_or_interval": 278,
+    "special_note": 93,
+    "blank": 20,
+    "unparsed": 12
+  },
+  "adult_valid_records": 8932,
+  "seedling_numeric_records": 1830,
+  "note": "Not a genetic dataset; no automatic imputation of trace, interval, special markers."
+}
