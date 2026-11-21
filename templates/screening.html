@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block title %}小麥材料比較與探索性篩選{% endblock %}
+{% block content %}
+<div class="eyebrow">MATERIAL COMPARISON</div>
+<h1>小麥材料比較與探索性篩選</h1>
+<p class="intro">以 2013 年 KARI-Njoro 黃銹病三次完整觀測的 490 筆材料為比較範圍，分析 AUDPC 與末次病害嚴重度，並依經驗分位數提供探索性低累積病害材料清單。</p>
+<section class="panel filter-panel">
+  <div class="section-label">分位數篩選</div><h2>AUDPC 百分位門檻</h2>
+  <form class="filters" action="{{url_for('screening_page')}}" method="get">
+    <div><label for="percentile">低 AUDPC 百分位</label><select id="percentile" name="percentile">
+      {% for p in options %}<option value="{{p}}" {% if percentile==p %}selected{% endif %}>P{{p}}：第 {{p}} 百分位以下（含同分）</option>{% endfor %}
+    </select></div>
+    {% if search_query %}<input type="hidden" name="q" value="{{search_query}}" />{% endif %}
+    {% if compare_input %}<input type="hidden" name="compare" value="{{compare_input}}" />{% endif %}
+    <button type="submit">套用門檻</button>
+    <a class="outline-button" href="{{url_for('screening_export',percentile=percentile)}}">下載低 AUDPC 材料 CSV</a>
+  </form>
+  <p class="hint">採用資料集中完整案例的經驗分位數，使用線性插值計算門檻；符合 AUDPC ≤ 門檻者納入，保留全部同分材料。</p>
+</section>
+<div class="metrics">
+  <div class="metric"><span>可比較材料</span><strong>{{selection.total}}</strong><small>三次完整觀測</small></div>
+  <div class="metric"><span>P{{selection.percentile}} AUDPC 門檻</span><strong>{{'%g'|format(selection.cutoff)}}</strong><small>單位：%·天</small></div>
+  <div class="metric"><span>符合門檻</span><strong>{{selection.selected}}</strong><small>保留同分材料</small></div>
+  <div class="metric"><span>名目百分位筆數</span><strong>{{selection.nominal}}</strong><small>供比較之參考數</small></div>
+</div>
+<section class="panel"><div class="section-label">描述性關係</div><h2>AUDPC 與末次病害嚴重度</h2>
+  {{chart|safe}}
+  <p class="hint">每個散點代表一筆完整材料；綠色為符合當前 AUDPC 門檻的材料，橫軸為 AUDPC（%·天），縱軸為 5/7 的病害嚴重度（%）。</p>
+</section>
+<section class="panel filter-panel"><div class="section-label">材料檢索</div><h2>查詢材料及其篩選狀態</h2>
+  <form class="filters" action="{{url_for('screening_page')}}" method="get">
+    <input type="hidden" name="percentile" value="{{percentile}}" />
+    {% if compare_input %}<input type="hidden" name="compare" value="{{compare_input}}" />{% endif %}
+    <div><label for="q">Excel 材料序號、accession、名稱或來源國</label>
+      <input id="q" name="q" type="search" value="{{search_query}}" placeholder="例如：43、1190202、Galberie、Spain" autocomplete="off" /></div>
+    <button type="submit">搜尋材料</button>
+    <a class="outline-button" href="{{url_for('screening_page',percentile=percentile,compare=compare_input)}}">清除搜尋</a>
+  </form>
+  <p class="hint">搜尋範圍限於 490 筆完整案例；材料主檔可由<a href="{{url_for('materials_page')}}">全部 650 筆材料查詢</a>檢索。</p>
+</section>
+<section class="panel"><div class="section-label">材料統計表</div>
+  <h2>{% if search_query %}檢索結果：{{matched_count}} 筆{% else %}低 AUDPC 材料：{{selection.selected}} 筆{% endif %}</h2>
+  {% if selected %}
+  <div class="table-scroll"><table><thead><tr><th>Excel 序號</th><th>來源 accession</th><th>來源國</th><th>4/21 (%)</th><th>4/30 (%)</th><th>5/7 (%)</th><th>AUDPC（%·天）</th><th>門檻狀態</th><th>詳細資料</th></tr></thead>
+    <tbody>{% for r in selected %}<tr><td><b>{{r.material_id}}</b></td><td>{{r.accession}}</td><td>{{r.country}}</td><td>{{'%g'|format(r.apr21_pct)}}</td><td>{{'%g'|format(r.apr30_pct)}}</td><td>{{'%g'|format(r.may07_pct)}}</td><td><b>{{'%g'|format(r.audpc_pct_days)}}</b></td><td><span class="status">{{'符合 P' ~ percentile if r.within_cutoff else '未達門檻'}}</span></td><td><a href="{{url_for('material_detail',material_id=r.material_id)}}">觀測明細</a></td></tr>{% endfor %}</tbody>
+  </table></div>
+  {% if matched_count>shown %}<p class="hint">目前顯示前 {{shown}} 筆；完整篩選資料可下載 CSV。</p>{% endif %}
+  {% else %}
+  <div class="alert-inline">沒有符合「{{search_query}}」且具有完整三次 Njoro 觀測的材料。</div>
+  {% if outside_complete %}<p>材料主檔中存在相符紀錄，但不符合本頁 AUDPC 的完整觀測條件：</p>
+    <div class="table-scroll"><table><thead><tr><th>材料序號</th><th>accession</th><th>材料名稱</th><th>查閱</th></tr></thead><tbody>
+      {% for r in outside_complete %}<tr><td>{{r.material_id}}</td><td>{{r.accession}}</td><td>{{r.accession_name or '未記錄'}}</td><td><a href="{{url_for('material_detail',material_id=r.material_id)}}">原始觀測</a></td></tr>{% endfor %}
+    </tbody></table></div>
+  {% else %}<p class="hint">請使用 Excel 材料序號或來源 accession 重新搜尋。</p>{% endif %}
+  {% endif %}
+</section>
+<section class="panel"><div class="section-label">病程比較</div><h2>指定材料的病害進展曲線</h2>
+  <form class="filters" action="{{url_for('screening_page')}}" method="get">
+    <input type="hidden" name="percentile" value="{{percentile}}" />
+    {% if search_query %}<input type="hidden" name="q" value="{{search_query}}" />{% endif %}
+    <div><label for="compare">材料序號或 accession（最多四筆，以逗號分隔）</label>
+      <input id="compare" name="compare" type="search" value="{{compare_input}}" placeholder="例如：43,436 或 1190201,1190202" /></div>
+    <button type="submit">比較曲線</button>
+  </form>
+  {% if compare_error %}<div class="alert-inline">無完整 AUDPC 資料或無法辨識的材料識別碼：{{compare_error|join('、')}}。可在<a href="{{url_for('materials_page')}}">材料主檔</a>檢查識別碼及觀測狀態。</div>{% endif %}
+  {% if comparison %}
+    {{comparison|safe}}
+    <div class="table-scroll"><table><thead><tr><th>材料序號</th><th>來源 accession</th><th>4/21 (%)</th><th>4/30 (%)</th><th>5/7 (%)</th><th>AUDPC（%·天）</th><th>明細</th></tr></thead><tbody>
+      {% for r in compare_rows %}<tr><td>{{r.material_id}}</td><td>{{r.accession}}</td><td>{{'%g'|format(r.apr21_pct)}}</td><td>{{'%g'|format(r.apr30_pct)}}</td><td>{{'%g'|format(r.may07_pct)}}</td><td>{{'%g'|format(r.audpc_pct_days)}}</td><td><a href="{{url_for('material_detail',material_id=r.material_id)}}">觀測明細</a></td></tr>{% endfor %}
+    </tbody></table></div>
+  {% else %}<p class="hint">未選取可比較的完整觀測材料。</p>{% endif %}
+</section>
+<section class="panel"><div class="section-label">研究結果的適用範圍</div><h2>低 AUDPC 材料之解釋限制</h2>
+  <ol class="method-list"><li><b>相對性：</b>篩選門檻依本次 Njoro 觀測期間與完整材料分布建立，並非一般性抗病標準。</li>
+    <li><b>資料完整度：</b>本系列納入 {{summary.complete_count}} 筆完整材料，其他 160 筆未參與該分布與排名。</li>
+    <li><b>環境條件：</b>病害壓力、感染反應及田間條件可能影響觀測值，單次低累積病害不足以證實抗病基因。</li>
+    <li><b>統計範圍：</b>結果為描述性比較與探索性篩選，不包含遺傳參數估計或育種試驗的正式推論。</li></ol>
+</section>
+{% endblock %}

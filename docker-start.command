@@ -29,6 +29,8 @@ if ! docker info >/dev/null 2>&1; then
   pause_exit 1
 fi
 
+echo "目前專案：$(pwd)"
+echo "版本識別：$(cat RELEASE_ID.txt)"
 echo "正在建立並啟動 Watkins Flask 網站（第一次使用會下載 Python 基底映像與套件）。"
 if ! docker compose up --build --detach; then
   echo "啟動失敗，請檢查上方訊息或執行 docker compose logs。"
@@ -37,7 +39,7 @@ fi
 
 ready=0
 for i in {1..30}; do
-  if curl --silent --fail "http://127.0.0.1:5000/health" >/dev/null; then
+  if curl --silent --fail "http://127.0.0.1:5050/health" >/dev/null; then
     ready=1
     break
   fi
@@ -45,8 +47,8 @@ for i in {1..30}; do
 done
 
 if [[ "$ready" == "1" ]]; then
-  echo "網站已啟動：http://127.0.0.1:5000"
-  open "http://127.0.0.1:5000"
+  echo "網站已啟動：http://127.0.0.1:5050"
+  open "http://127.0.0.1:5050"
   echo "可以關閉這個終端機視窗；網站會持續由 Docker Desktop 運行。"
 else
   echo "容器已提交啟動，但網站尚未通過健康檢查。請執行 docker compose logs 查看原因。"

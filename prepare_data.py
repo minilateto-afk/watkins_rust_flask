@@ -15,7 +15,9 @@ from pathlib import Path
 from typing import Any
 import pandas as pd
 from measurements import MEASUREMENTS, as_records
-from audpc_analysis import export_audpc
+from audpc_analysis import export_audpc, calculate_njoro_audpc
+from findings_analysis import export_findings
+from coverage_analysis import export_coverage
 
 ROOT = Path(__file__).resolve().parent
 RAW = ROOT / 'data/raw/Watkins.xlsx'
@@ -124,6 +126,9 @@ def export_all(rows: list[list[Any]], directory: Path=OUTPUT) -> dict:
     }
     (directory/'overview.json').write_text(json.dumps(overview,ensure_ascii=False,indent=2),encoding='utf-8')
     overview['audpc_phase2'] = export_audpc(obs,mats,directory)
+    complete, _, _ = calculate_njoro_audpc(obs, mats)
+    overview['findings_phase3'] = export_findings(complete, directory)
+    overview['coverage_phase4'] = export_coverage(obs,mats,complete,directory)
     return overview
 
 def main():

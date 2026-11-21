@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block title %}資料品質{% endblock %}
 {% block content %}
-<div class="eyebrow">DATA AUDIT / REPRODUCIBLE</div>
+<div class="eyebrow">DATA VALIDATION</div>
 <h1>資料品質 <span class="h-accent">/ 完整度報告</span></h1>
 <p class="intro">不以任意數字替代缺失值、痕量、範圍或特殊註記。完整度表保留每個來源 Excel 欄位的辨識狀態。</p>
-<div class="metrics"><div class="metric"><span>材料總數</span><strong>{{count}}</strong></div><div class="metric"><span>原始量測格數</span><strong>{{'{:,}'.format(total)}}</strong></div><div class="metric"><span>可解析成株期</span><strong>{{'{:,}'.format(counts.get('adult_severity',0))}}</strong></div><div class="metric"><span>保留痕量／範圍</span><strong>{{counts.get('trace_not_quantified',0)+counts.get('range_or_interval',0)}}</strong></div></div>
-<section class="panel"><div class="section-label">MEASUREMENT-LEVEL AUDIT</div><h2>各測量欄資料品質</h2><div class="table-scroll"><table>
+<div class="metrics"><div class="metric"><span>材料總數</span><strong>{{count}}</strong></div><div class="metric"><span>觀測儲存格總數</span><strong>{{'{:,}'.format(total)}}</strong></div><div class="metric"><span>可解析成株期</span><strong>{{'{:,}'.format(counts.get('adult_severity',0))}}</strong></div><div class="metric"><span>保留痕量／範圍</span><strong>{{counts.get('trace_not_quantified',0)+counts.get('range_or_interval',0)}}</strong></div></div>
+<section class="panel"><div class="section-label">觀測欄位品質</div><h2>各測量欄資料品質</h2><div class="table-scroll"><table>
 <thead><tr><th>來源欄</th><th>病害</th><th>地點</th><th>階段</th><th>日期</th><th>成株有效</th><th>幼苗數字</th><th>缺失</th><th>痕量</th><th>區間</th><th>其他</th></tr></thead>
 <tbody>{% for r in rows %}<tr><td><a href="{{url_for('dashboard',m=r.measurement_id)}}">{{r.measurement_id}}</a></td><td>{{disease_zh.get(r.disease,r.disease)}}</td><td>{{r.site}}</td><td>{{'幼苗' if r.stage=='seedling' else '成株'}}</td><td>{{r.date}}</td><td>{{r.numerical_adult}}</td><td>{{r.numerical_seedling}}</td><td>{{r.missing}}</td><td>{{r.trace}}</td><td>{{r.range}}</td><td>{{r.other}}</td></tr>{% endfor %}</tbody>
 </table></div><p class="hint">每欄總數為 650。此表中的「缺失」包含空白與來源標示的缺失記號。</p></section>

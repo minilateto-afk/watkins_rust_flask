@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}650 筆材料涵蓋分析{% endblock %}
+{% block content %}
+<div class="eyebrow">DATA COMPLETENESS</div>
+<h1>650 筆材料的資料完整度分析</h1>
+<p class="intro">盤點全部 650 筆材料的可解析觀測值、缺失情形與可分析範圍。各測量尺度、病害與試驗地點分別處理，不合併為單一抗病分數。</p>
+<div class="metrics">
+  <div class="metric"><span>完整材料主檔</span><strong>{{summary.total}}</strong><small>全部可查詢</small></div>
+  <div class="metric"><span>至少一筆可解析的數字評分</span><strong>{{summary.any_numeric}}</strong><small>可進行相應的定量描述</small></div>
+  <div class="metric"><span>Njoro 三次完整時間曲線</span><strong>{{summary.complete_ijk}}</strong><small>可計算目前的 AUDPC</small></div>
+  <div class="metric"><span>無可解析的數字評分</span><strong>{{summary.no_numeric}}</strong><small>仍保留資料與缺失狀態</small></div>
+</div>
+<section class="panel">
+ <div class="section-label">資料完整度分組</div><h2>材料觀測完整度與分析適用範圍</h2>
+ <div class="mini-stats"><span><b>490</b>：三次完整，可計算本系列 AUDPC</span><span><b>111</b>：其他日期／病害有可用數值</span><span><b>49</b>：無可直接解析的數值評分</span></div>
+ <p class="hint">另從 I/J/K 角度看，490 筆有三次有效值、6 筆只有一次、154 筆沒有有效值；不採用單點數值補成完整曲線。</p>
+</section>
+<div class="split-grid">
+ <section class="panel"><div class="section-label">可解析數值欄位</div><h2>每筆材料的有效數值欄位數</h2>{{ chart_counts | safe }}<p class="hint">每筆有 29 個預定義觀測欄位，圖中數字為可解析觀測數，並非病害嚴重度。</p></section>
+ <section class="panel"><div class="section-label">成株期病害數據涵蓋</div><h2>三種銹病的材料數值涵蓋</h2>{{ chart_disease | safe }}<p class="hint">各病害只要有一筆可解析成株期評分就納入；三組材料高度重疊，不可加總。</p></section>
+</div>
+<section class="panel"><div class="section-label">材料查詢與分組</div><h2>查詢全部 650 筆材料</h2>
+<form class="filters" method="get" action="{{url_for('coverage_page')}}">
+ <div><label for="q">材料編號／品種／來源國</label><input id="q" name="q" value="{{q}}" placeholder="例如 1190201、India、43" /></div>
+ <div><label for="group">資料狀態</label><select id="group" name="group">
+ <option value="all" {% if group=='all' %}selected{% endif %}>全部 650 筆</option>
+ <option value="complete_ijk" {% if group=='complete_ijk' %}selected{% endif %}>490 筆三次完整</option>
+ <option value="other_numeric" {% if group=='other_numeric' %}selected{% endif %}>111 筆其他數值</option>
+ <option value="no_numeric" {% if group=='no_numeric' %}selected{% endif %}>49 筆無數值</option>
+ </select></div>
+ <button type="submit">套用篩選</button>
+ <a href="{{url_for('coverage_export')}}" class="outline-button">匯出 650 筆 CSV</a>
+</form>
+<p class="hint">符合 {{results_count}} 筆 · 第 {{page}} / {{n_pages}} 頁，每頁最多 50 筆。點選材料編號可查看各病害、日期及地點的原始評分。</p>
+</section>
+<section class="panel"><div class="table-scroll"><table><thead><tr><th>序號</th><th>accession</th><th>來源國</th><th>可解析 / 29</th><th>黃銹病成株</th><th>莖銹病成株</th><th>葉銹病成株</th><th>幼苗數字</th><th>I/J/K 完整數</th><th>分組</th></tr></thead>
+<tbody>{% for r in rows %}<tr>
+<td><a href="{{url_for('material_detail',material_id=r.material_id)}}">{{r.material_id}}</a></td>
+<td>{{r.accession}}</td><td>{{r.country}}</td><td><b>{{r.numeric_count}}</b> / 29</td>
+<td>{{r.yellow_adult_count}}</td><td>{{r.stem_adult_count}}</td><td>{{r.leaf_adult_count}}</td><td>{{r.seedling_numeric_count}}</td><td>{{r.njoro_ijk_valid_count}} / 3</td><td>{{r.coverage_label}}</td></tr>{% endfor %}
+</tbody></table></div>
+{% if n_pages>1 %}<div class="actions">
+ {% if page>1 %}<a class="outline-button" href="{{url_for('coverage_page',group=group,q=q,page=page-1)}}">← 上一頁</a>{% endif %}
+ {% if page<n_pages %}<a class="outline-button" href="{{url_for('coverage_page',group=group,q=q,page=page+1)}}">下一頁 →</a>{% endif %}
+</div>{% endif %}
+</section>
+<div class="alert-inline"><b>研究界線：</b>數值涵蓋率反映資料完整程度，不代表抗病能力。缺乏可解析數值的材料仍納入缺失紀錄，不依此推定其抗病表現。</div>
+{% endblock %}

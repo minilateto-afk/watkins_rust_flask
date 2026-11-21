@@ -1,8 +1,38 @@
 {% extends 'base.html' %}
-{% block title %}材料查詢{% endblock %}
+{% block title %}小麥材料查詢{% endblock %}
 {% block content %}
-<div class="eyebrow">ACCESSION EXPLORER</div><h1>小麥材料 <span class="h-accent">/ 查詢</span></h1>
-<p class="intro">可依來源材料編號、Excel 序號、來源國或材料名稱搜尋。</p>
-<section class="panel"><form class="filters" method="get"><div><label for="q">材料查詢</label><input id="q" name="q" value="{{q}}" placeholder="例如 1190201、Spain、Galberie" /></div><button type="submit">搜尋 ↗</button></form><p class="hint">符合 {{total}} 筆；最多展示前 100 筆。</p></section>
-<section class="panel"><div class="table-scroll"><table><thead><tr><th>Excel 序號</th><th>來源 accession</th><th>來源國</th><th>材料名稱</th><th>查看</th></tr></thead><tbody>{% for r in rows %}<tr><td>{{r.material_id}}</td><td>{{r.accession}}</td><td>{{r.country}}</td><td>{{r.accession_name}}</td><td><a href="{{url_for('material_detail',material_id=r.material_id)}}">觀測明細 →</a></td></tr>{% endfor %}</tbody></table></div></section>
+<div class="eyebrow">MATERIAL RECORDS</div>
+<h1>小麥材料查詢</h1>
+<p class="intro">查詢全部 {{total_materials}} 筆材料主檔，支援 Excel 材料序號、來源 accession 編號、品種名稱及來源國。檢索結果包含原始觀測明細；AUDPC 僅適用於符合完整觀測條件的材料。</p>
+<section class="panel filter-panel">
+  <div class="section-label">材料檢索</div>
+  <h2>識別碼與來源資訊</h2>
+  <form class="filters" action="{{url_for('materials_page')}}" method="get">
+    <div><label for="q">材料序號、accession、名稱或來源國</label>
+      <input id="q" name="q" type="search" value="{{q}}" placeholder="例如：43、1190202、Galberie、Spain" autocomplete="off" /></div>
+    <button type="submit">搜尋材料</button>
+    <a class="outline-button" href="{{url_for('materials_page')}}">清除條件</a>
+  </form>
+  <p class="hint">Excel 材料序號為 1–650，與來源 accession 編號不同。輸入完整識別碼可優先取得精確匹配。</p>
+</section>
+<section class="panel">
+  <div class="section-label">檢索結果</div>
+  <h2>{% if q %}搜尋「{{q}}」：{{total}} 筆{% else %}材料清單：{{total}} 筆{% endif %}</h2>
+  {% if rows %}
+  <p class="hint">第 {{page}} / {{n_pages}} 頁，每頁最多 50 筆。點選「觀測明細」檢視全部資料欄位。</p>
+  <div class="table-scroll"><table>
+    <thead><tr><th>Excel 材料序號</th><th>來源 accession</th><th>來源國</th><th>材料名稱</th><th>資料查閱</th></tr></thead>
+    <tbody>{% for r in rows %}<tr>
+      <td><b>{{r.material_id}}</b></td><td>{{r.accession}}</td><td>{{r.country or '未記錄'}}</td><td>{{r.accession_name or '未記錄'}}</td>
+      <td><a href="{{url_for('material_detail',material_id=r.material_id)}}">觀測明細</a></td>
+    </tr>{% endfor %}</tbody>
+  </table></div>
+  {% if n_pages>1 %}<div class="actions">
+    {% if page>1 %}<a class="outline-button" href="{{url_for('materials_page',q=q,page=page-1)}}">上一頁</a>{% endif %}
+    {% if page<n_pages %}<a class="outline-button" href="{{url_for('materials_page',q=q,page=page+1)}}">下一頁</a>{% endif %}
+  </div>{% endif %}
+  {% else %}
+  <div class="alert-inline">查無符合「{{q}}」的材料。請確認 Excel 材料序號或 accession 編號，亦可依材料名稱或來源國重新查詢。</div>
+  {% endif %}
+</section>
 {% endblock %}

@@ -1,12 +1,44 @@
 {% extends 'base.html' %}
-{% block title %}方法與限制{% endblock %}
+{% block title %}研究方法與分析限制{% endblock %}
 {% block content %}
-<div class="eyebrow">METHODOLOGY / LIMITATIONS</div><h1>研究方法 <span class="h-accent">/ 第一階段</span></h1>
-<p class="intro">先確立資料與統計品質，再逐步驗證能否使用病害進展模型或推論統計。</p>
+<div class="eyebrow">METHODOLOGY</div>
+<h1>研究方法與分析限制</h1>
+<p class="intro">本系統以公開田間試驗資料為基礎，採用可追溯的資料清理、描述統計與病害進展曲線下面積（AUDPC）計算。統計結論以實際觀測範圍為限。</p>
 <div class="split-grid">
-<section class="panel"><div class="section-label">DATA PIPELINE</div><h2>資料處理流程</h2><ol class="method-list"><li>保留原始 Excel 及三列來源標題。</li><li>記錄病害、地點、苗期／成株期、觀測日期與來源欄。</li><li>將明確百分比（如 50MR）拆為 50 與 MR。</li><li>標記 TMS、0-20MSS、DRY 等需進一步解釋的紀錄。</li><li>僅以可解析的數值計算描述統計，並公開缺失狀況。</li></ol></section>
-<section class="panel"><div class="section-label">FORMULAS</div><h2>統計方法</h2><p><b>平均數：</b> x̄ = Σxᵢ / n</p><p><b>樣本標準差：</b> s = √[Σ(xᵢ − x̄)² / (n − 1)]</p><p><b>中位數與四分位數：</b>使用排序及分位數的描述性定義。</p><p class="hint">若排除痕量或區間資料，其平均值只代表明確解析的子集合，不能宣稱無偏代表全體材料。</p></section>
+<section class="panel"><div class="section-label">資料處理</div><h2>原始資料與評分解析</h2>
+<ol class="method-list"><li>保存原始 Excel 及來源標題，不覆寫原始評分。</li><li>逐欄記錄病害類型、試驗地點、生長階段、觀測日期及原始來源欄。</li><li>將符合規則的成株期評分（如 50MR）分離為嚴重度 50% 與感染反應 MR。</li><li>將 TMS、0-20MSS、DRY 等評分記錄為特殊格式，未擅自轉換為單點數值。</li><li>針對可解析的觀測值計算描述統計，並記錄缺失與排除數量。</li></ol>
+</section>
+<section class="panel"><div class="section-label">描述統計</div><h2>量化指標與適用資料</h2>
+<p><b>算術平均數：</b>x̄ = Σxᵢ / n</p>
+<p><b>樣本標準差：</b>s = √[Σ(xᵢ − x̄)² / (n − 1)]</p>
+<p><b>分布描述：</b>中位數、四分位數與直方圖。</p>
+<p class="hint">成株期嚴重度以 0–100% 表示；幼苗期評分使用不同尺度，分別統計，不跨量尺合併。</p>
+</section>
 </div>
-<section class="panel"><div class="section-label">NEXT STAGE / NOT YET IMPLEMENTED</div><h2>下一階段候選方法</h2><ul class="method-list"><li><b>AUDPC：</b>檢查每組日期是否屬同一場連續觀測、評分與缺失規則，再使用梯形法。</li><li><b>Spearman：</b>先確認不同地點可以可靠配對同一材料，且比較期間與病害具可比性。</li><li><b>Friedman：</b>需要先確認重複測量的配對關係與推論前提。</li></ul><p class="hint">本版未計算上述三種方法，也未推斷抗病基因、遺傳率或正式育種選拔結果。</p></section>
-<section class="panel"><div class="section-label">PROVENANCE</div><h2>資料來源</h2><p>Watkins Yellow Rust Phenotypes Kenya & Ethiopia (2013 field observations). Zenodo DOI: <a href="https://doi.org/10.5281/zenodo.8349020" target="_blank" rel="noopener">10.5281/zenodo.8349020</a></p><p>本系統使用下載的 Excel 當作原始資料。資料集具體再散布授權請以 Zenodo 的原始紀錄 Rights / License 為準，不因可公開下載就推定可任意重發。</p></section>
+<section class="panel"><div class="section-label">病害進展量化</div><h2>AUDPC 梯形積分法</h2>
+<p><b>分析範圍：</b>2013 年肯亞 KARI-Njoro 成株期黃銹病之 4 月 21 日、4 月 30 日、5 月 7 日觀測（來源 Excel I、J、K 欄）。僅使用三次皆有可解析百分比的材料。</p>
+<div class="formula-card">AUDPC = [(y₁ + y₂)/2] × 9 + [(y₂ + y₃)/2] × 7</div>
+<p>yᵢ 為第 i 次病害嚴重度（%）。AUDPC 的單位為 %·天。時間加權平均嚴重度為 AUDPC / 16，單位為 %。</p>
+<p><b>計算實例：</b>第 2 號材料的三次嚴重度為 20%、30%、30%。AUDPC = 225 + 210 = 435 %·天，時間加權平均為 27.1875%。</p>
+<p class="hint">採用相鄰觀測點之間的梯形近似，不代表連續病程的精確積分。排除缺少完整 I/J/K 記錄的 160 筆材料，未對其進行插補。</p>
+<p>參考資料：<a href="https://www.apsnet.org/edcenter/sites/EcologyAndEpidemiologyInR/DiseaseProgress/Pages/AUDPC.aspx" target="_blank" rel="noopener">American Phytopathological Society — AUDPC</a>。</p>
+</section>
+<section class="panel"><div class="section-label">配對描述統計</div><h2>病害變化與曲線比較</h2>
+<p>同一批完整材料在三次日期的平均數、中位數、樣本標準差及首末變化量，均以同一組觀測對象計算。</p>
+<div class="formula-card">ΔS = y₃ − y₁（百分點）　｜　AUDPC = 4.5 y₁ + 8 y₂ + 3.5 y₃</div>
+<p>第 43 號材料（0、10、10）與第 436 號材料（5、5、15）的 AUDPC 均為 115 %·天，顯示相同的累積指標不必然對應相同的病害進展曲線。</p>
+<p>低 AUDPC 材料以經驗百分位數進行描述性篩選，將符合門檻及門檻同分的材料一併列入。</p>
+</section>
+<section class="panel"><div class="section-label">資料涵蓋</div><h2>650 筆材料之有效觀測範圍</h2>
+<p>原始主檔包含 650 筆材料及每份材料 29 個預先定義的觀測欄位。601 筆至少具有一個可直接解析的數值評分；490 筆具備 Njoro I/J/K 完整三次資料；111 筆有其他可解析觀測；49 筆沒有可直接解析的數值評分。</p>
+<p><b>資料完整度：</b>可解析的成株期嚴重度與幼苗期原始數字評分欄位數 ÷ 29。此比例僅描述資料涵蓋，不代表抗病程度。</p>
+<p class="hint">不同病害、地點與觀測期的評分不合併為單一抗病分數，各病害的涵蓋材料數亦不可相加。</p>
+</section>
+<section class="panel"><div class="section-label">研究推論範圍</div><h2>資料與方法的限制</h2>
+<ul class="method-list"><li>病害嚴重度為表型觀測，不能單獨證明特定抗病基因或遺傳機制。</li><li>不同試驗地點的感染壓力與觀測期間可能不同，因此不直接合併不同系列的原始 AUDPC。</li><li>因缺乏完整田間試驗區集、遺傳型資料與必要的重複設計資訊，本研究不進行遺傳率、基因定位或正式育種推薦等推論。</li><li>結果以描述性統計、數值積分及探索性分組為主，不將觀測差異直接解釋為因果效應。</li></ul>
+</section>
+<section class="panel"><div class="section-label">資料來源</div><h2>研究資料與引用</h2>
+<p>Watkins Yellow Rust Phenotypes Kenya & Ethiopia（2013 年田間試驗紀錄）。Zenodo DOI：<a href="https://doi.org/10.5281/zenodo.8349020" target="_blank" rel="noopener">10.5281/zenodo.8349020</a>。</p>
+<p>資料採下載之 Excel 檔案進行本機處理。原始資料的重製與散布條件應依資料集原始網站之授權說明辦理。</p>
+</section>
 {% endblock %}

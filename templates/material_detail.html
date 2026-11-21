@@ -1,9 +1,28 @@
 {% extends 'base.html' %}
-{% block title %}材料 {{mat.material_id}}{% endblock %}
+{% block title %}材料 {{mat.material_id}}：觀測明細{% endblock %}
 {% block content %}
-<div class="eyebrow">ACCESSION DETAIL / {{mat.material_id}}</div><h1>材料 {{mat.material_id}} <span class="h-accent">/ 觀測紀錄</span></h1>
-<p class="intro">來源 accession：<b>{{mat.accession}}</b>　｜　來源國：{{mat.country or '未記載'}}　｜　名稱：{{mat.accession_name or '未記載'}}</p>
-<section class="panel"><div class="section-label">ADULT PHENOTYPE</div><h2>成株期已量化的病害嚴重度</h2>{% if chart %}{{chart|safe}}{% else %}<p>沒有可用的成株期百分比紀錄。</p>{% endif %}<p class="hint">不同病害與試驗地點不可直接連成同一條進展曲線；圖線依疾病、地點、觀測系列分組。</p></section>
-<section class="panel"><div class="section-label">RAW VS CLEANED</div><h2>所有原始觀測與清理結果</h2><div class="table-scroll"><table><thead><tr><th>病害</th><th>地點</th><th>階段</th><th>日期</th><th>來源欄</th><th>原始評分</th><th>數值 (%)</th><th>感染反應</th><th>解析狀態</th></tr></thead><tbody>{% for r in records %}<tr><td>{{disease_zh.get(r.disease,r.disease)}}</td><td>{{r.site}}</td><td>{{r.stage}}</td><td>{{r.date}}</td><td>{{r.source_column}}</td><td class="mono">{{r.raw_score or '—'}}</td><td>{{r.severity_pct}}</td><td>{{r.reaction}}</td><td>{{status_zh.get(r.parse_status,r.parse_status)}}</td></tr>{% endfor %}</tbody></table></div></section>
-<a class="back-link" href="{{url_for('materials_page')}}">← 返回材料查詢</a>
+<div class="eyebrow">MATERIAL RECORD</div>
+<h1>材料 {{mat.material_id}}：觀測明細</h1>
+<p class="intro">來源 accession：<b>{{mat.accession}}</b>　｜　來源國：{{mat.country or '未記錄'}}　｜　材料名稱：{{mat.accession_name or '未記錄'}}　｜　Excel 列次：{{mat.excel_row}}</p>
+<section class="panel">
+  <div class="section-label">病害進展指標</div>
+  {% if audpc_result %}
+  <h2>Njoro 黃銹病 AUDPC：{{'%g'|format(audpc_result.audpc_pct_days)}} %·天</h2>
+  <p>2013 年 4/21、4/30、5/7 三次完整觀測；時間加權平均嚴重度 {{'%.2f'|format(audpc_result.time_weighted_mean_pct)}}%。</p>
+  <a class="outline-button" href="{{url_for('audpc_page',id=mat.material_id)}}">查看 AUDPC 計算與曲線</a>
+  {% else %}
+  <h2>Njoro 黃銹病 AUDPC：不適用</h2>
+  <p>本材料未符合 I/J/K 三次可解析觀測的條件。其他日期或病害的原始評分仍列於下方；未使用缺失值插補或跨地點合併計算。</p>
+  {% endif %}
+</section>
+<section class="panel"><div class="section-label">成株期觀測</div><h2>病害嚴重度紀錄</h2>
+  {% if chart %}{{chart|safe}}{% else %}<p>此材料沒有可解析的成株期病害嚴重度百分比。</p>{% endif %}
+  <p class="hint">曲線依病害、試驗地點及觀測系列分組。不同條件下的曲線不視為同一次連續病程。</p>
+</section>
+<section class="panel"><div class="section-label">原始資料與清理紀錄</div><h2>觀測欄位明細</h2>
+  <div class="table-scroll"><table><thead><tr><th>病害</th><th>地點</th><th>生長階段</th><th>日期</th><th>Excel 欄</th><th>原始評分</th><th>成株期嚴重度（%）</th><th>感染反應</th><th>解析狀態</th></tr></thead>
+    <tbody>{% for r in records %}<tr><td>{{disease_zh.get(r.disease,r.disease)}}</td><td>{{r.site}}</td><td>{{'幼苗期' if r.stage=='seedling' else '成株期'}}</td><td>{{r.date}}</td><td>{{r.source_column}}</td><td class="mono">{{r.raw_score or '—'}}</td><td>{{r.severity_pct if r.severity_pct != '' else '—'}}</td><td>{{r.reaction or '—'}}</td><td>{{status_zh.get(r.parse_status,r.parse_status)}}</td></tr>{% endfor %}</tbody>
+  </table></div>
+</section>
+<div class="actions"><a class="outline-button" href="{{url_for('materials_page')}}">返回材料查詢</a><a class="outline-button" href="{{url_for('screening_page',q=mat.material_id)}}">於材料比較中檢索</a></div>
 {% endblock %}

@@ -11,19 +11,23 @@
 <div class="shell">
   <aside class="sidebar">
     <div class="brand"><div class="brand-icon">W</div><div><strong>RUST ATLAS</strong><small>WATKINS RESEARCH / 2013</small></div></div>
-    <p class="nav-label">ANALYSIS WORKSPACE</p>
+    <p class="nav-label">RESEARCH ANALYTICS</p>
     <nav>
       <a class="navlink {% if active=='dashboard' %}selected{% endif %}" href="{{url_for('dashboard')}}">◫ <span>統計總覽</span></a>
+      <a class="navlink {% if active=='coverage' %}selected{% endif %}" href="{{url_for('coverage_page')}}">▥ <span>材料完整度</span></a>
+      <a class="navlink {% if active=='findings' %}selected{% endif %}" href="{{url_for('findings_page')}}">▤ <span>研究發現</span></a>
+      <a class="navlink {% if active=='screening' %}selected{% endif %}" href="{{url_for('screening_page')}}">⌁ <span>材料比較</span></a>
+      <a class="navlink {% if active=='audpc' %}selected{% endif %}" href="{{url_for('audpc_page')}}">∿ <span>AUDPC 分析</span></a>
       <a class="navlink {% if active=='quality' %}selected{% endif %}" href="{{url_for('quality_page')}}">▦ <span>資料品質</span></a>
       <a class="navlink {% if active=='materials' %}selected{% endif %}" href="{{url_for('materials_page')}}">⌕ <span>材料查詢</span></a>
       <a class="navlink {% if active=='methods' %}selected{% endif %}" href="{{url_for('methods_page')}}">◇ <span>方法與限制</span></a>
     </nav>
-    <div class="side-note"><span class="dot"></span>第一階段 · 觀察性描述分析<br /><span>未進行抗病性因果或遺傳推論</span></div>
+    <div class="side-note"><span class="dot"></span>2013 年小麥銹病田間試驗資料<br /><span>描述統計與病害進展分析</span></div>
   </aside>
   <main class="content">
     <header class="masthead"><span>公開田間試驗資料 × 統計視覺化</span><span class="year">2013 FIELD OBSERVATIONS</span></header>
     {% block content %}{% endblock %}
-    <footer>資料來源：Watkins YellowRust Phenotypes Kenya & Ethiopia · Zenodo 10.5281/zenodo.8349020<br />本工具為學習與探索用途；原始資料保留、特殊評分不擅自改寫。</footer>
+    <footer>資料來源：Watkins YellowRust Phenotypes Kenya & Ethiopia · Zenodo 10.5281/zenodo.8349020<br />分析限於可追溯之原始觀測；特殊評分維持原始記錄。</footer>
   </main>
 </div>
 </body>

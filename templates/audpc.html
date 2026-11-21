@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% block title %}AUDPC 病害進展分析{% endblock %}
 {% block content %}
-<div class="eyebrow">PHASE 02 / DISEASE PROGRESS ANALYSIS</div>
-<h1>AUDPC <span class="h-accent">/ 病害進展曲線分析</span></h1>
-<p class="intro">使用同一田間觀測系列的三個日期，透過梯形法計算黃銹病的累積病害程度。這是完整資料子集的描述性分析，<b>不是抗病基因鑑定、育種排名或統計顯著性檢定</b>。</p>
+<div class="eyebrow">AUDPC ANALYSIS</div>
+<h1>AUDPC 病害進展分析</h1>
+<p class="intro">使用同一田間觀測系列的三個日期，透過梯形法計算黃銹病的累積病害程度。分析僅針對完整觀測子集，結果不涉及抗病基因鑑定、育種排名或顯著性檢定。</p>
 <section class="panel">
-  <div class="section-label">SCOPE / VERIFIED SOURCE COLUMNS</div>
-  <h2>唯一分析範圍：2013 · 黃銹病 · KARI-Njoro · 成株期</h2>
+  <div class="section-label">觀測範圍</div>
+  <h2>分析範圍：2013 年 KARI-Njoro 黃銹病成株期</h2>
   <div class="date-strip"><div><strong>4 月 21 日</strong><span>Excel I 欄 · 第 0 天</span></div><div class="date-connector">9 天 →</div><div><strong>4 月 30 日</strong><span>Excel J 欄 · 第 9 天</span></div><div class="date-connector">7 天 →</div><div><strong>5 月 7 日</strong><span>Excel K 欄 · 第 16 天</span></div></div>
   <p class="hint">不跨接不同地點或 Sep–Oct 觀測系列；只納入三欄皆有明確數值病害百分比的材料。痕量、區間、缺失與特殊標記均不插補。</p>
 </section>
@@ -17,8 +17,8 @@
   <div class="metric"><span>AUDPC 中位數</span><strong>{{'%.1f'|format(summary.median_audpc)}}</strong><small>單位：%·天</small></div>
 </div>
 <div class="split-grid">
-  <section class="panel"><div class="section-label">DISTRIBUTION</div><h2>完整材料 AUDPC 分布</h2>{{ histogram|safe }}<p class="hint">此圖只包含 {{summary.complete_materials}} 筆完整材料，並不代表全部 {{summary.total_materials}} 筆。低 AUDPC 表示本觀測期間記錄的累積病害較低，不等同於已確認的遺傳抗病性。</p></section>
-  <section class="panel"><div class="section-label">FORMULA</div><h2>從梯形求和到 AUDPC</h2>
+  <section class="panel"><div class="section-label">AUDPC 分布</div><h2>完整材料 AUDPC 分布</h2>{{ histogram|safe }}<p class="hint">此圖只包含 {{summary.complete_materials}} 筆完整材料，並不代表全部 {{summary.total_materials}} 筆。低 AUDPC 表示本觀測期間記錄的累積病害較低，不等同於已確認的遺傳抗病性。</p></section>
+  <section class="panel"><div class="section-label">數值積分</div><h2>從梯形求和到 AUDPC</h2>
     <div class="formula-card">AUDPC = Σ [(yᵢ + yᵢ₊₁)/2] × (tᵢ₊₁ − tᵢ)</div>
     <p>yᵢ 是該次觀測的病害嚴重度百分比，tᵢ 是距第一次觀測的天數。</p>
     <p>這份資料的時間點固定為 <b>0、9、16 天</b>，因此：</p>
@@ -27,7 +27,8 @@
     <p class="hint">AUDPC 單位是 %·天（百分比乘天），不是發病機率。三次觀測之間以直線近似，並不代表實際病程一定是線性的。</p>
   </section>
 </div>
-<section class="panel"><div class="section-label">REAL SOURCE EXAMPLE / AUDITABLE CALCULATION</div><h2>查看一筆材料的原始數值與梯形計算</h2>
+<section class="panel"><div class="section-label">材料計算明細</div><h2>單筆材料的梯形計算明細</h2>
+  {% if unknown_selection %}<div class="alert-inline">指定材料「{{unknown_selection}}」不具備本系列完整 AUDPC 紀錄。可由<a href="{{url_for('materials_page',q=unknown_selection)}}">材料主檔</a>查詢其原始觀測。</div>{% endif %}
   {% if selected %}
   <div class="audpc-sample"><div><p class="hint">目前選取</p><h2>材料 {{ selected.material_id }} · {{selected.accession_name or selected.accession}}</h2><p class="subtle">來源國：{{ selected.country or '未記載' }} · Excel 第 {{selected.excel_row}} 列</p></div><div><span>計算後 AUDPC</span><strong>{{'%.2f'|format(selected.audpc_pct_days)}} <small>%·天</small></strong></div></div>
   <div class="split-grid">
@@ -41,19 +42,19 @@
     <p><a href="{{url_for('material_detail',material_id=selected.material_id)}}">查看這份材料的全部原始觀測 →</a></p></div>
   </div>{% else %}<p>沒有完整的三次觀測，因此目前無法計算。</p>{% endif %}
 </section>
-<section class="panel"><div class="section-label">EXPLORE / COMPLETE CASES</div><h2>尋找材料與比較數值</h2>
+<section class="panel"><div class="section-label">完整觀測材料查詢</div><h2>尋找材料與比較數值</h2>
   <form class="filters" action="{{url_for('audpc_page')}}" method="get">
     <div><label for="q">搜尋材料編號、accession、名稱或來源國</label><input id="q" name="q" value="{{q}}" placeholder="例如：2、Spain、Galberie" /></div>
     <div class="sort-control"><label for="sort">排序方式</label><select id="sort" name="sort"><option value="low" {% if sort=='low' %}selected{% endif %}>AUDPC：由低至高</option><option value="high" {% if sort=='high' %}selected{% endif %}>AUDPC：由高至低</option><option value="id" {% if sort=='id' %}selected{% endif %}>材料編號</option></select></div>
     <button type="submit">查詢</button>
     <a class="outline-button" href="{{url_for('audpc_export')}}">匯出 490 筆 CSV</a>
   </form>
-  <p class="hint">找到 {{shown_count}} 筆完整材料；下表顯示前 60 筆。點選「查看曲線」即可在上方顯示該筆的計算步驟。這不是正式抗病育種候選名單。</p>
+  <p class="hint">符合 {{shown_count}} 筆完整材料；下表顯示前 60 筆。選取材料後，上方呈現其曲線與計算步驟。此表不構成正式育種候選名單。</p>
   <div class="table-scroll"><table><thead><tr><th>材料編號</th><th>accession</th><th>來源國</th><th>4/21 (%)</th><th>4/30 (%)</th><th>5/7 (%)</th><th>AUDPC (%·天)</th><th>時間加權平均 (%)</th><th>操作</th></tr></thead><tbody>
   {% for r in rows %}<tr><td>{{r.material_id}}</td><td>{{r.accession}}</td><td>{{r.country}}</td><td>{{'%g'|format(r.apr21_pct)}}</td><td>{{'%g'|format(r.apr30_pct)}}</td><td>{{'%g'|format(r.may07_pct)}}</td><td><b>{{'%.1f'|format(r.audpc_pct_days)}}</b></td><td>{{'%.2f'|format(r.time_weighted_mean_pct)}}</td><td><a href="{{url_for('audpc_page',id=r.material_id,q=q,sort=sort)}}">查看曲線</a></td></tr>{% endfor %}
   </tbody></table></div>
 </section>
-<section class="panel"><div class="section-label">DATA QUALITY / EXCLUDED CASES</div><h2>為什麼不是全部 650 筆都計算？</h2>
+<section class="panel"><div class="section-label">分析樣本與排除條件</div><h2>AUDPC 完整案例選取條件</h2>
   <div class="mini-stats"><span>I 欄有效：<b>{{summary.per_date_valid.I}}</b></span><span>J 欄有效：<b>{{summary.per_date_valid.J}}</b></span><span>K 欄有效：<b>{{summary.per_date_valid.K}}</b></span></div>
   <p>三個日期必須是<b>同一份材料、同一系列、三個有效百分比值</b>。只要其中一欄缺失、是痕量、區間或特殊標記，就不做 AUDPC，也不把數值當成零或內插補值。</p>
   <div class="table-scroll"><table><thead><tr><th>材料</th><th>Excel I / J / K 原始評分</th><th>排除原因</th></tr></thead><tbody>{% for r in excluded_preview %}<tr><td>{{r.material_id}}</td><td class="mono">{{r.I_raw}} / {{r.J_raw}} / {{r.K_raw}}</td><td>{{r.reason}}</td></tr>{% endfor %}</tbody></table></div>

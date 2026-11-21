@@ -1,10 +1,10 @@
-name: watkins-rust
+name: watkins-rust-verified
 services:
   web:
     build:
       context: .
       dockerfile: Dockerfile
-    image: watkins-rust:local
+    image: watkins-rust:verified-20261121
     ports:
-      - "127.0.0.1:5000:5000"
+      - "127.0.0.1:5050:5000"
     restart: unless-stopped

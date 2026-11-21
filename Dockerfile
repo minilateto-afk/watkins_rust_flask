@@ -13,6 +13,10 @@ RUN python -m pip install --no-cache-dir -r requirements.txt
 
 COPY . ./
 
+# Distinguish this release from old projects at build time.
+RUN echo "Watkins verified release 2026-11-21 - testing real Flask routes" \
+    && python verify_release.py
+
 # Rebuild all derived tables from the original workbook during image creation;
 # fail the build if data conversion or the bundled regression tests fail.
 RUN python prepare_data.py && python -m unittest discover -s tests -v

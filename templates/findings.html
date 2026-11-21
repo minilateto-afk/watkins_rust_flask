@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}研究發現與曲線比較{% endblock %}
+{% block content %}
+<div class="eyebrow">RESULTS AND INTERPRETATION</div>
+<h1>病害進展之描述性結果</h1>
+<p class="intro">僅比較 2013 年肯亞 KARI-Njoro 黃銹病同一批 <b>{{summary.complete_count}}</b> 筆完整材料在 4/21、4/30、5/7 的三次觀測。以下是描述性統計，不做顯著性或因果推論。</p>
+<div class="metrics">
+  <div class="metric"><span>配對完整材料</span><strong>{{summary.complete_count}}</strong><small>原始 Excel I、J、K 欄</small></div>
+  <div class="metric"><span>嚴重度增加</span><strong>{{summary.direction_counts['增加']}}</strong><small>末次高於首次</small></div>
+  <div class="metric"><span>嚴重度不變</span><strong>{{summary.direction_counts['不變']}}</strong><small>末次等於首次</small></div>
+  <div class="metric"><span>嚴重度下降</span><strong>{{summary.direction_counts['下降']}}</strong><small>末次低於首次</small></div>
+</div>
+<div class="split-grid">
+  <section class="panel"><div class="section-label">同一批材料之病害趨勢</div><h2>同一批材料的平均數與中位數</h2>{{trend|safe}}
+    <div class="table-scroll"><table><thead><tr><th>日期</th><th>平均嚴重度</th><th>中位數</th><th>樣本標準差</th></tr></thead><tbody>
+    {% for d in summary.dates_stats %}<tr><td>{{d.date}}</td><td>{{'%.2f'|format(d.mean)}}%</td><td>{{'%.1f'|format(d.median)}}%</td><td>{{'%.2f'|format(d.std_sample)}}</td></tr>{% endfor %}
+    </tbody></table></div>
+    <p class="hint">三個日期始終使用相同的 {{summary.complete_count}} 筆材料，不混用各日期全部可解析資料。平均值的上升是觀測結果，不可直接宣稱由日期「造成」。</p>
+  </section>
+  <section class="panel"><div class="section-label">首末觀測差異</div><h2>4/21 到 5/7 的變化方向</h2>{{direction_chart|safe}}
+    <p>平均變化 <b>{{'%+.2f'|format(summary.delta_mean_pp)}} 百分點</b>，中位變化 <b>{{'%+.1f'|format(summary.delta_median_pp)}} 百分點</b>。</p>
+    <p class="formula-card">ΔS = S(5/7) − S(4/21)</p>
+    <p class="hint">「增加／不變／下降」只比較首日與末日，不代表中間兩次都同方向，也不是任何品種的遺傳性抗性結論。</p>
+  </section>
+</div>
+<section class="panel"><div class="section-label">首末變化量分布</div><h2>個別材料的首末變化量分布</h2>{{delta_chart|safe}}
+<p class="hint">變化量以百分點為單位（例如 20% → 30%，增加 10 個百分點），不是百分比成長率。分析只包含完整案例，因此可能有選擇偏差。</p></section>
+<section class="panel"><div class="section-label">相同 AUDPC 的不同曲線</div><h2>相同 AUDPC 的不同病害進展曲線</h2>
+  <p>來自原始 Excel 的材料 <b>43</b> 與 <b>436</b> 都有 AUDPC = <b>{{'%g'|format(summary.pair_audpc)}} %·天</b>，但三次實際記錄不同，說明一個積分指標無法完整保留曲線形狀。</p>
+  <div class="split-grid"><div>
+    <div class="table-scroll"><table><thead><tr><th>材料</th><th>4/21</th><th>4/30</th><th>5/7</th><th>AUDPC</th></tr></thead><tbody>
+      {% for r in pair_rows %}<tr><td><b>{{r.material_id}}</b></td><td>{{'%g'|format(r.apr21_pct)}}%</td><td>{{'%g'|format(r.apr30_pct)}}%</td><td>{{'%g'|format(r.may07_pct)}}%</td><td>{{'%g'|format(r.audpc_pct_days)}}</td></tr>{% endfor %}
+    </tbody></table></div>
+    <p class="formula-card">AUDPC = 4.5 y₁ + 8 y₂ + 3.5 y₃</p>
+    <p class="hint">係數由 9 天和 7 天兩個梯形區間展開而來。案例數值取自資料集原始觀測紀錄。</p>
+  </div><div>
+    <p class="hint" style="margin-top:0">支援最多四筆完整材料的曲線比較，可輸入 Excel 序號或來源 accession。</p>
+    <form action="{{url_for('findings_page')}}" method="get" class="filters">
+      <div><label for="compare">Excel 材料序號或 accession（逗號分隔）</label><input id="compare" name="compare" value="{{compare_input}}" placeholder="43,436 或 1190201,1190202" /></div>
+      <button type="submit">比較曲線</button>
+    </form>
+    {% if unknown_ids %}<p class="alert-inline">找不到完整三次數值的材料：{{unknown_ids|join('、')}}。請改用 <a href="{{url_for('audpc_page')}}">AUDPC 分析</a> 搜尋。</p>{% endif %}
+  </div></div>
+  {% if comparison %}{{comparison|safe}}{% else %}<p class="hint">尚未選取可比較的完整觀測材料。</p>{% endif %}
+  <div class="table-scroll"><table><thead><tr><th>材料</th><th>原始 I/J/K</th><th>首末變化</th><th>AUDPC（%·天）</th><th>查看明細</th></tr></thead><tbody>
+    {% for r in selected_rows %}<tr><td>{{r.material_id}}</td><td class="mono">{{r.I_raw}} / {{r.J_raw}} / {{r.K_raw}}</td><td>{{'%+.1f'|format(r.delta_16d_pct_points)}} 百分點</td><td>{{'%.1f'|format(r.audpc_pct_days)}}</td><td><a href="{{url_for('audpc_page',id=r.material_id)}}">計算步驟</a></td></tr>{% endfor %}
+  </tbody></table></div>
+</section>
+<section class="panel"><div class="section-label">資料可重現性與分析界線</div><h2>研究界線與資料可追溯性</h2>
+  <div class="actions"><a class="outline-button" href="{{url_for('findings_export')}}">匯出全部 {{summary.complete_count}} 筆配對統計 CSV</a><a class="outline-button" href="{{url_for('screening_page')}}">低 AUDPC 材料分析</a></div>
+  <p>原始資料來自 Zenodo Watkins 小麥田間銹病表型資料；各材料保留來源欄位及原始評分。<b>未做 Friedman、Spearman、顯著性檢定、遺傳率估計或正式抗病育種排名。</b></p>
+</section>
+{% endblock %}
